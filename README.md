@@ -2,11 +2,12 @@ GLSLplusplus
 ============
 
 GLSL++ allows you to write C++ code which will (at runtime) be translated into a GLSL shader.
-The tool greatly simplifies writing shaders that depend on run-time parameters without the #IFDEF clutter.
+The tool greatly simplifies writing shaders that depend on run-time parameters without the #ifdef clutter.
 
 Example:
 
 The following C++ code:
+
 ```
 Program program;
 
@@ -36,9 +37,9 @@ fragment = vec4(texture(source, uvs_out).rgb(), 1.0);
 program.EndFragmentShaderFunction();
 ```
 
-translated to GLSL:
+translates to:
 
-Vertex shader
+Vertex shader:
 ```
 in (layout=0) vec3 PositionIn;
 in (layout=1) vec2 UVsIn;
@@ -52,7 +53,7 @@ void main()
 }
 ```
 
-Fragment shader
+Fragment shader:
 ```
 in vec2 UVsOut;
 uniform sampler2D Source;
