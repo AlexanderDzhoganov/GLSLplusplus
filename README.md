@@ -67,3 +67,14 @@ void main()
 ```
 
 Note: GLSL++ is still work in progress (as in, not all GLSL features are supported). Pull requests are welcome.
+
+Currently supported GLSL features:
+* Types: int, float, vec2, vec3, vec4, mat3, mat4, sampler2D, sampler2DMS
+* All GLSL functions as of GLSL 4.40
+* Attribute layout
+* Uniform binding
+* Swizzling
+* "special" GLSL variables (e.g. gl_FragCoord)
+
+Not supported:
+* Function definitions
