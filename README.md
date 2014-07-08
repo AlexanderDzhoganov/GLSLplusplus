@@ -78,3 +78,10 @@ Currently supported GLSL features:
 
 Not supported:
 * Function definitions
+* matNxM
+* Uniform blocks
+* Geometry shaders
+* Compute shaders
+* GLSL macros
+* const
+* control-flow (if, for, while, etc)
