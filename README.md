@@ -65,3 +65,5 @@ void main()
     temp_4 = vec4(temp_5.xyz, 1);
 }
 ```
+
+Note: GLSL++ is still work in progress (as in, not all GLSL features are supported). Pull requests are welcome.
