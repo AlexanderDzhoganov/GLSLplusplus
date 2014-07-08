@@ -2,7 +2,7 @@ GLSLplusplus
 ============
 
 GLSL++ allows you to write C++ code which will (at runtime) be translated into a GLSL shader.
-The tool greatly simplifies writing shaders that depend on run-time parameters without the #ifdef clutter.
+This approach greatly simplifies writing shaders that depend on run-time parameters without the #ifdef clutter.
 
 Example:
 
