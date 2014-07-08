@@ -7,7 +7,7 @@ The tool greatly simplifies writing shaders that depend on run-time parameters w
 Example:
 
 The following C++ code:
-`
+```
 Program program;
 
 vec3 position_in(VertexIn, "PositionIn", 0);
@@ -34,14 +34,12 @@ program.BeginFragmentShaderFunction("main");
 fragment = vec4(texture(source, uvs_out).rgb(), 1.0);
 
 program.EndFragmentShaderFunction();
-`
+```
 
 translated to GLSL:
 
 Vertex shader
-`
-  #version 150
-
+```
 in (layout=0) vec3 PositionIn;
 in (layout=1) vec2 UVsIn;
 out vec4 gl_Position;
@@ -52,12 +50,10 @@ void main()
     gl_Position = vec4(PositionIn.xy, 1, 1);
     UVsOut = UVsIn;
 }
-`
+```
 
 Fragment shader
-`
-#version 150
-
+```
 in vec2 UVsOut;
 uniform sampler2D Source;
 out vec4 temp_4;
@@ -67,4 +63,4 @@ void main()
     vec4 temp_5 = texture(Source, UVsOut);
     temp_4 = vec4(temp_5.xyz, 1);
 }
-`
+```
