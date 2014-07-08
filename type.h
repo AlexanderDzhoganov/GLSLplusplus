@@ -1,0 +1,121 @@
+#ifndef __GLSLPP_TYPE_H
+#define __GLSLPP_TYPE_H
+
+namespace GLSLPP
+{
+
+	enum VariableType
+	{
+
+		Variable = 0,
+		VertexUniform,
+		FragmentUniform,
+		VertexIn,
+		VertexOut,
+		FragmentOut,
+		FragmentIn,
+		Temporary,
+
+	};
+
+	class Type
+	{
+
+		public:
+		Type(VariableType type, const std::string& typeName, const std::string& name, int layoutLocation = -1) : m_Type(type), m_TypeName(typeName), m_Name(name)
+		{
+			if (type == VertexUniform)
+			{
+				if (enable_explicit_locations && layoutLocation != -1)
+				{
+					currentProgram->InjectVertexCode(xs("% uniform % %", xs("layout(binding = %)", layoutLocation), m_TypeName, m_Name));
+				}
+				else
+				{
+					currentProgram->InjectVertexCode(xs("uniform % %", m_TypeName, m_Name));
+				}
+			}
+			else if (type == FragmentUniform)
+			{
+				if (enable_explicit_locations && layoutLocation != -1)
+				{
+					currentProgram->InjectFragmentCode(xs("% uniform % %", xs("layout(binding = %)", layoutLocation), m_TypeName, m_Name));
+				}
+				else
+				{
+					currentProgram->InjectFragmentCode(xs("uniform % %", m_TypeName, m_Name));
+				}
+			}
+			else if (type == VertexIn)
+			{
+				if (enable_explicit_locations && layoutLocation != -1)
+				{
+					currentProgram->InjectVertexCode(xs("% in % %", xs("layout(location = %)", layoutLocation), m_TypeName, m_Name));
+				}
+				else
+				{
+					currentProgram->InjectVertexCode(xs("in % %", m_TypeName, m_Name));
+				}
+			}
+			else if (type == VertexOut)
+			{
+				currentProgram->InjectVertexCode(xs("out % %", m_TypeName, m_Name));
+
+				if (m_Name != "gl_Position")
+				{
+					currentProgram->InjectFragmentCode(xs("in % %", m_TypeName, m_Name));
+				}
+			}
+			else if (type == FragmentIn)
+			{
+				currentProgram->InjectFragmentCode(xs("in % %", m_TypeName, m_Name));
+			}
+			else if (type == FragmentOut)
+			{
+				if (enable_explicit_locations && layoutLocation != -1)
+				{
+					currentProgram->InjectFragmentCode(xs("% out % %", xs("layout(location = %)", layoutLocation), m_TypeName, m_Name));
+				}
+				else
+				{
+					currentProgram->InjectFragmentCode(xs("out % %", m_TypeName, m_Name));
+				}
+			}
+		}
+
+		VariableType GetType() const
+		{
+			return m_Type;
+		}
+
+		void SetType(VariableType type)
+		{
+			m_Type = type;
+		}
+
+		void SetName(const std::string& name)
+		{
+			m_Name = name;
+		}
+
+		const std::string& GetName() const
+		{
+			return m_Name;
+		}
+
+		const std::string& GetTypeName() const
+		{
+			return m_TypeName;
+		}
+
+		private:
+		VariableType m_Type;
+		std::string m_Name;
+		std::string m_TypeName;
+		size_t m_LayoutLocation = 0;
+
+	};
+
+}
+
+#endif
