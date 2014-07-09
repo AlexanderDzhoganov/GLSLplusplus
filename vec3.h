@@ -182,7 +182,6 @@ namespace GLSLPP
 			return xs("%.%", GetName(), SwizzleExtension(m_Swizzle));
 		}
 
-		private:
 		generic_vec3(VariableType type, const std::string& name, Swizzle swizzle) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Swizzle(swizzle)
@@ -195,6 +194,7 @@ namespace GLSLPP
 		{
 		}
 
+		private:
 		Swizzle m_Swizzle = Swizzle::NoSwizzle;
 		bool m_Declared = false;
 		std::string m_TemporaryInitialization;

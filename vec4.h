@@ -401,7 +401,6 @@ namespace GLSLPP
 		SWIZZLE_OP(generic_vec4, aabr); SWIZZLE_OP(generic_vec4, aabg); SWIZZLE_OP(generic_vec4, aabb); SWIZZLE_OP(generic_vec4, aaba);
 		SWIZZLE_OP(generic_vec4, aaar); SWIZZLE_OP(generic_vec4, aaag); SWIZZLE_OP(generic_vec4, aaab); SWIZZLE_OP(generic_vec4, aaaa);
 		
-		private:
 		generic_vec4(VariableType type, const std::string& name, Swizzle swizzle) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Swizzle(swizzle)
@@ -429,6 +428,7 @@ namespace GLSLPP
 			return GetName();
 		}
 
+		private:
 		bool m_Declared = false;
 		std::string m_TemporaryInitialization;
 		Swizzle m_Swizzle = Swizzle::NoSwizzle;
