@@ -70,7 +70,7 @@ void main()
 }
 ```
 
-**Note: GLSL++ is still work in progress (as in, not all GLSL features are supported). Pull requests are welcome.**
+**Note: GLSL++ is still in rapid development (as in, not everything works correctly, not all GLSL features are supported and syntax may change at any time). Pull requests are welcome.**
 
 Currently supported GLSL features:
 * Types: int, float, vec2, vec3, vec4, mat3, mat4, sampler2D, sampler2DMS
