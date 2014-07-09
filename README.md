@@ -4,7 +4,7 @@ GLSLplusplus
 **GLSL++ allows you to write C++ code which will (at runtime) output a valid GLSL shader.**
 
 The goal of the library is twofold:
-- Create a domain-specific language within C++ that looks and feels as similar to GLSL as possible.
+- Define a domain-specific language within C++ that looks and feels as similar to GLSL as possible.
 - Enable GLSL code to take advantage of C++'s static typing, compile-time checks and extensive tooling, therefore eliminating many problems associated with writing GLSL (e.g. mistyped variable names, incorrect assignments, etc.) without an additional compilation phase.
 
 This approach also greatly simplifies writing (uber-)shaders that depend on run-time parameters without the #ifdef clutter.
