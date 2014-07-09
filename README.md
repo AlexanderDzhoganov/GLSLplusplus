@@ -1,8 +1,14 @@
 GLSLplusplus
 ============
 
-GLSL++ allows you to write C++ code which will (at runtime) be translated into a GLSL shader.
-This approach greatly simplifies writing shaders that depend on run-time parameters without the #ifdef clutter.
+GLSL++ allows you to write C++ code which will (at runtime) output a valid GLSL shader.
+
+The goal of the library is twofold:
+1. Create a domain-specific language within C++ that looks and feels as similar to GLSL as possible.
+2. Enable GLSL code to take advantage of C++'s static typing, compile-time checks and extensive tooling,
+therefore eliminating many problems associated with writing GLSL (e.g. mistyped variable names, incorrect assignments, etc.) without an additional compilation phase.
+
+This approach also greatly simplifies writing (uber-)shaders that depend on run-time parameters without the #ifdef clutter.
 
 Example:
 
@@ -74,7 +80,9 @@ Currently supported GLSL features:
 * Attribute layout
 * Uniform binding
 * Swizzling
-* "special" GLSL variables (e.g. gl_FragCoord)
+* "Special" GLSL variables (e.g. gl_FragCoord)
+* Control flow - if & while
+* Extensions: GL_ARB_explicit_attrib_location, GL_ARB_explicit_uniform_location, GL_ARB_shading_language_420pack
 
 Not supported:
 * Function definitions
@@ -84,4 +92,4 @@ Not supported:
 * Compute shaders
 * GLSL macros
 * const
-* control-flow (if, for, while, etc)
+* control flow - for
