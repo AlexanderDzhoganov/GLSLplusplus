@@ -146,6 +146,11 @@ namespace GLSLPP
 			return *this;
 		}
 
+		t_abstract operator [] (int index) const
+		{
+			return t_abstract(xs("%[%]", ExtendedName(), index));
+		}
+
 		SWIZZLE_OP(t_abstract, x); SWIZZLE_OP(t_abstract, y);
 		SWIZZLE_OP(generic_vec2, xx); SWIZZLE_OP(generic_vec2, xy); SWIZZLE_OP(generic_vec2, yx); SWIZZLE_OP(generic_vec2, yy);
 

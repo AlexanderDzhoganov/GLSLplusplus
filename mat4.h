@@ -23,6 +23,11 @@ namespace GLSLPP
 		{
 		}
 
+		vec4 operator[] (size_t i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i));
+		}
+
 		std::string ExtendedName() const
 		{
 			if (GetType() == Temporary)

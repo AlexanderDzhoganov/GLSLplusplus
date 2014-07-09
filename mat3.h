@@ -14,6 +14,11 @@ namespace GLSLPP
 
 		mat3(VariableType type, const std::string& name) : Type(type, "mat3", name) {}
 
+		vec3 operator[] (size_t i) const
+		{
+			return vec3(xs("%[%]", ExtendedName(), i));
+		}
+
 		std::string ExtendedName() const
 		{
 			if (GetType() == Temporary)
