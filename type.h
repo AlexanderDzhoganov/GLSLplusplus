@@ -26,7 +26,7 @@ namespace GLSLPP
 		{
 			if (type == VertexUniform)
 			{
-				if (enable_explicit_locations && layoutLocation != -1)
+				if (currentProgram->m_GL_ARB_explicit_attrib_location && layoutLocation != -1)
 				{
 					currentProgram->InjectVertexCode(xs("% uniform % %", xs("layout(binding = %)", layoutLocation), m_TypeName, m_Name));
 				}
@@ -37,7 +37,7 @@ namespace GLSLPP
 			}
 			else if (type == FragmentUniform)
 			{
-				if (enable_explicit_locations && layoutLocation != -1)
+				if (currentProgram->m_GL_ARB_explicit_uniform_location && layoutLocation != -1)
 				{
 					currentProgram->InjectFragmentCode(xs("% uniform % %", xs("layout(binding = %)", layoutLocation), m_TypeName, m_Name));
 				}
@@ -48,7 +48,7 @@ namespace GLSLPP
 			}
 			else if (type == VertexIn)
 			{
-				if (enable_explicit_locations && layoutLocation != -1)
+				if (currentProgram->m_GL_ARB_explicit_attrib_location && layoutLocation != -1)
 				{
 					currentProgram->InjectVertexCode(xs("% in % %", xs("layout(location = %)", layoutLocation), m_TypeName, m_Name));
 				}
@@ -72,7 +72,7 @@ namespace GLSLPP
 			}
 			else if (type == FragmentOut)
 			{
-				if (enable_explicit_locations && layoutLocation != -1)
+				if (currentProgram->m_GL_ARB_explicit_attrib_location && layoutLocation != -1)
 				{
 					currentProgram->InjectFragmentCode(xs("% out % %", xs("layout(location = %)", layoutLocation), m_TypeName, m_Name));
 				}

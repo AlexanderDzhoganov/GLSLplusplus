@@ -4,6 +4,19 @@
 namespace GLSLPP
 {
 
+	enum GLSLVersion
+	{
+		GLSL150,
+		GLSL440,
+	};
+
+	enum GLSLExtension
+	{
+		GL_ARB_explicit_attrib_location = 0,
+		GL_ARB_explicit_uniform_location = 1,
+		GL_ARB_shading_language_420pack = 2,
+	};
+
 	class Program
 	{
 
@@ -27,21 +40,20 @@ namespace GLSLPP
 		friend class sampler2DMS;
 
 		public:
-		Program()
+		Program(GLSLVersion version = GLSL440) : m_Version(version)
 		{
-			m_VertexSource += "#version 150\n\n";
-			m_FragmentSource += "#version 150\n\n";
-
-			if (enable_explicit_locations)
+			switch (m_Version)
 			{
-				m_VertexSource += "#extension GL_ARB_explicit_attrib_location : enable\n\n";
-				m_VertexSource += "#extension GL_ARB_explicit_uniform_location : enable\n\n";
-				m_VertexSource += "#extension GL_ARB_shading_language_420pack : enable\n\n";
-				m_FragmentSource += "#extension GL_ARB_explicit_attrib_location : enable\n\n";
-				m_FragmentSource += "#extension GL_ARB_explicit_uniform_location : enable\n\n";
-				m_FragmentSource += "#extension GL_ARB_shading_language_420pack : enable\n\n";
+			case GLSL150:
+				m_VertexSource += "#version 150\n\n";
+				m_FragmentSource += "#version 150\n\n";
+				break;
+			case GLSL440:
+				m_VertexSource += "#version 440\n\n";
+				m_FragmentSource += "#version 440\n\n";
+				break;
 			}
-
+			
 			Bind();
 		}
 
@@ -49,9 +61,41 @@ namespace GLSLPP
 		{
 			if (m_Bound == true && currentProgram == this)
 			{
-				//assert(currentProgram == this);
-
 				currentProgram = nullptr;
+			}
+		}
+
+		void EnableExtension(GLSLExtension extension)
+		{
+			switch (extension)
+			{
+			case GLSLExtension::GL_ARB_explicit_attrib_location:
+				if (m_GL_ARB_explicit_attrib_location)
+				{
+					return;
+				}
+				m_GL_ARB_explicit_attrib_location = true;
+				m_VertexSource += "#extension GL_ARB_explicit_attrib_location : enable\n";
+				m_FragmentSource += "#extension GL_ARB_explicit_attrib_location : enable\n";
+				break;
+			case GLSLExtension::GL_ARB_explicit_uniform_location:
+				if (m_GL_ARB_explicit_uniform_location)
+				{
+					return;
+				}
+				m_GL_ARB_explicit_uniform_location = true;
+				m_VertexSource += "#extension GL_ARB_explicit_uniform_location : enable\n";
+				m_FragmentSource += "#extension GL_ARB_explicit_uniform_location : enable\n";
+				break;
+			case GLSLExtension::GL_ARB_shading_language_420pack:
+				if (m_GL_ARB_shading_language_420pack)
+				{
+					return;
+				}
+				m_GL_ARB_shading_language_420pack = true;
+				m_VertexSource += "#extension GL_ARB_shading_language_420pack : enable\n";
+				m_FragmentSource += "#extension GL_ARB_shading_language_420pack : enable\n";
+				break;
 			}
 		}
 
@@ -66,41 +110,55 @@ namespace GLSLPP
 			m_Bound = true;
 		}
 
-		void BeginVertexShaderFunction(const std::string& name)
+		void VertexMain()
 		{
-			m_VertexSource += xs("\nvoid %()\n{\n", name);
+			m_VertexSource += "\nvoid main()\n{\n";
 			m_InVertexShader = true;
 			m_InFragmentShader = false;
 		}
 
-		void EndVertexShaderFunction()
+		void EndVertexMain()
 		{
 			m_VertexSource += "}\n";
 			m_InVertexShader = false;
 		}
 
-		void BeginFragmentShaderFunction(const std::string& name)
+		void FragmentMain()
 		{
-			m_FragmentSource += xs("\nvoid %()\n{\n", name);
+			m_FragmentSource += "\nvoid main()\n{\n";
 			m_InFragmentShader = true;
 			m_InVertexShader = false;
 		}
 
-		void EndFragmentShaderFunction()
+		void EndFragmentMain()
 		{
 			m_InFragmentShader = false;
 			m_FragmentSource += "}\n";
 		}
 
-		void InjectCode(const std::string& code)
+		void InjectCode(const std::string& code, bool endLine = true)
 		{
 			if (m_InVertexShader)
 			{
-				m_VertexSource += xs("    %;\n", code);
+				if (endLine)
+				{
+					m_VertexSource += xs("    %;\n", code);
+				}
+				else
+				{
+					m_VertexSource += xs("    %", code);
+				}
 			}
 			else if (m_InFragmentShader)
 			{
-				m_FragmentSource += xs("    %;\n", code);
+				if (endLine)
+				{
+					m_FragmentSource += xs("    %;\n", code);
+				}
+				else
+				{
+					m_FragmentSource += xs("    %", code);
+				}
 			}
 		}
 
@@ -154,6 +212,11 @@ namespace GLSLPP
 		std::string m_FragmentSource;
 
 		bool m_Bound = false;
+
+		GLSLVersion m_Version = GLSL440;
+		bool m_GL_ARB_explicit_attrib_location = false;
+		bool m_GL_ARB_explicit_uniform_location = false;
+		bool m_GL_ARB_shading_language_420pack = false;
 
 	};
 	

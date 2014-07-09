@@ -10,7 +10,6 @@ namespace GLSLPP
 	
 	class Program;
 	extern Program* currentProgram;
-	extern bool enable_explicit_locations;
 
 }
 
@@ -30,5 +29,6 @@ namespace GLSLPP
 #include "sampler2Dms.h"
 #include "functions.h"
 #include "operators.h"
+#include "controlflow.h"
 
 #endif

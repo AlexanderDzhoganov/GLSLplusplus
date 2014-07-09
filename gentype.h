@@ -188,7 +188,7 @@ namespace GLSLPP
 				}
 				else
 				{
-					currentProgram->InjectCode(xs("% = %", GetName(), f.ExtendedName()));
+					currentProgram->InjectCode(xs("% = %", ExtendedName(), f.ExtendedName()));
 				}
 			}
 
