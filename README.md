@@ -1,7 +1,7 @@
-# GLSLplusplus
+## GLSLplusplus
 ============
 
-## GLSL++ allows you to write C++ code which will (at runtime) output a valid GLSL shader.
+### GLSL++ allows you to write C++ code which will (at runtime) output a valid GLSL shader.
 
 The goal of the library is twofold:
 - Create a domain-specific language within C++ that looks and feels as similar to GLSL as possible.
@@ -71,7 +71,7 @@ void main()
 }
 ```
 
-## Note: GLSL++ is still work in progress (as in, not all GLSL features are supported). Pull requests are welcome.
+### Note: GLSL++ is still work in progress (as in, not all GLSL features are supported). Pull requests are welcome.
 
 Currently supported GLSL features:
 * Types: int, float, vec2, vec3, vec4, mat3, mat4, sampler2D, sampler2DMS
