@@ -23,23 +23,23 @@ vec4 gl_Position(VertexOut, "gl_Position");
 vec2 uvs_out(VertexOut, "UVsOut");
 
 // vertex main()
-program.BeginVertexShaderFunction("main");
+program.VertexMain();
 
 gl_Position = vec4(position_in.xy(), 1.0, 1.0);
 uvs_out = uvs_in;
 
-program.EndVertexShaderFunction();
+program.EndVertexMain();
 //
 
 sampler2D source(FragmentUniform, "Source");
 vec4 fragment(FragmentOut);
 
 // fragment main()
-program.BeginFragmentShaderFunction("main");
+program.FragmentMain("main");
 
 fragment = vec4(texture(source, uvs_out).rgb(), 1.0);
 
-program.EndFragmentShaderFunction();
+program.EndFragmentMain();
 ```
 
 translates to:
