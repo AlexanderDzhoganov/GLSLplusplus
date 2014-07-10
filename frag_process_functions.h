@@ -1,0 +1,11 @@
+#ifndef __GLSLPP_FRAG_PROCESS_FUNCTIONS_H
+#define __GLSLPP_FRAG_PROCESS_FUNCTIONS_H
+
+namespace GLSLPP
+{
+
+
+
+}
+
+#endif

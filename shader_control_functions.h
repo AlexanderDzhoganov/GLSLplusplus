@@ -1,0 +1,11 @@
+#ifndef __GLSL_SHADER_CONTROL_FUNCTIONS_H
+#define __GLSL_SHADER_CONTROL_FUNCTIONS_H
+
+namespace GLSLPP
+{
+
+	
+
+}
+
+#endif
