@@ -4,7 +4,7 @@
 namespace GLSLPP
 {
 
-	enum VariableType
+	enum VariableQualifier
 	{
 
 		Variable = 0,
@@ -22,7 +22,7 @@ namespace GLSLPP
 	{
 
 		public:
-		Type(VariableType type, const std::string& typeName, const std::string& name, int layoutLocation = -1) : m_Type(type), m_TypeName(typeName), m_Name(name)
+		Type(VariableQualifier type, const std::string& typeName, const std::string& name, int layoutLocation = -1) : m_Type(type), m_TypeName(typeName), m_Name(name)
 		{
 			if (type == VertexUniform)
 			{
@@ -83,12 +83,12 @@ namespace GLSLPP
 			}
 		}
 
-		VariableType GetType() const
+		VariableQualifier GetType() const
 		{
 			return m_Type;
 		}
 
-		void SetType(VariableType type)
+		void SetType(VariableQualifier type)
 		{
 			m_Type = type;
 		}
@@ -109,7 +109,7 @@ namespace GLSLPP
 		}
 
 		private:
-		VariableType m_Type;
+		VariableQualifier m_Type;
 		std::string m_Name;
 		std::string m_TypeName;
 		size_t m_LayoutLocation = 0;

@@ -10,9 +10,9 @@ namespace GLSLPP
 		public:
 		mat3() : Type(Variable, "mat3", currentProgram->GenerateName()) {}
 
-		explicit mat3(VariableType type) : Type(type, "mat3", currentProgram->GenerateName()) {}
+		explicit mat3(VariableQualifier type) : Type(type, "mat3", currentProgram->GenerateName()) {}
 
-		mat3(VariableType type, const std::string& name) : Type(type, "mat3", name) {}
+		mat3(VariableQualifier type, const std::string& name) : Type(type, "mat3", name) {}
 
 		vec3 operator[] (size_t i) const
 		{
@@ -51,9 +51,9 @@ namespace GLSLPP
 		public:
 		dmat3() : Type(Variable, "dmat3", currentProgram->GenerateName()) {}
 
-		explicit dmat3(VariableType type) : Type(type, "dmat3", currentProgram->GenerateName()) {}
+		explicit dmat3(VariableQualifier type) : Type(type, "dmat3", currentProgram->GenerateName()) {}
 
-		dmat3(VariableType type, const std::string& name) : Type(type, "dmat3", name) {}
+		dmat3(VariableQualifier type, const std::string& name) : Type(type, "dmat3", name) {}
 
 		dvec3 operator[] (size_t i) const
 		{

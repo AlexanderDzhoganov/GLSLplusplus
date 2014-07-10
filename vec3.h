@@ -47,24 +47,24 @@ namespace GLSLPP
 		{
 		}
 
-		explicit generic_vec3(VariableType type) :
+		explicit generic_vec3(VariableQualifier type) :
 			m_Declared(type != Variable),
 			Type(type, vec_detail::glsl_type_string(), currentProgram->GenerateName())
 		{
 		}
 
-		generic_vec3(VariableType type, int layoutPosition) :
+		generic_vec3(VariableQualifier type, int layoutPosition) :
 			m_Declared(type != Variable),
 			Type(type, vec_detail::glsl_type_string(), currentProgram->GenerateName(), layoutPosition)
 		{
 		}
 
-		generic_vec3(VariableType type, const std::string& name) :
+		generic_vec3(VariableQualifier type, const std::string& name) :
 			Type(type, vec_detail::glsl_type_string(), name) 
 		{
 		}
 
-		generic_vec3(VariableType type, const std::string& name, int layoutPosition) :
+		generic_vec3(VariableQualifier type, const std::string& name, int layoutPosition) :
 			Type(type, vec_detail::glsl_type_string(), name, layoutPosition)
 		{
 		}
@@ -195,7 +195,7 @@ namespace GLSLPP
 			return xs("%.%", GetName(), SwizzleExtension(m_Swizzle));
 		}
 
-		generic_vec3(VariableType type, const std::string& name, Swizzle swizzle) :
+		generic_vec3(VariableQualifier type, const std::string& name, Swizzle swizzle) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Swizzle(swizzle)
 		{

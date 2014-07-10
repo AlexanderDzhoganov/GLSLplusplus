@@ -10,9 +10,9 @@ namespace GLSLPP
 		public:
 		mat2() : Type(Variable, "mat2", currentProgram->GenerateName()) {}
 
-		explicit mat2(VariableType type) : Type(type, "mat2", currentProgram->GenerateName()) {}
+		explicit mat2(VariableQualifier type) : Type(type, "mat2", currentProgram->GenerateName()) {}
 
-		mat2(VariableType type, const std::string& name) : Type(type, "mat2", name) {}
+		mat2(VariableQualifier type, const std::string& name) : Type(type, "mat2", name) {}
 
 		vec2 operator[] (size_t i) const
 		{
@@ -51,9 +51,9 @@ namespace GLSLPP
 		public:
 		dmat2() : Type(Variable, "dmat2", currentProgram->GenerateName()) {}
 
-		explicit dmat2(VariableType type) : Type(type, "dmat2", currentProgram->GenerateName()) {}
+		explicit dmat2(VariableQualifier type) : Type(type, "dmat2", currentProgram->GenerateName()) {}
 
-		dmat2(VariableType type, const std::string& name) : Type(type, "dmat2", name) {}
+		dmat2(VariableQualifier type, const std::string& name) : Type(type, "dmat2", name) {}
 
 		dvec2 operator[] (size_t i) const
 		{

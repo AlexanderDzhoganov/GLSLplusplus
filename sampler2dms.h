@@ -12,11 +12,11 @@ namespace GLSLPP
 		friend vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, int lod);
 
 		public:
-		explicit sampler2DMS(VariableType type) : Type(type, "sampler2DMS", currentProgram->GenerateName())
+		explicit sampler2DMS(VariableQualifier type) : Type(type, "sampler2DMS", currentProgram->GenerateName())
 		{
 		} 
 
-		sampler2DMS(VariableType type, const std::string& name) : Type(type, "sampler2DMS", name)
+		sampler2DMS(VariableQualifier type, const std::string& name) : Type(type, "sampler2DMS", name)
 		{
 		}
 

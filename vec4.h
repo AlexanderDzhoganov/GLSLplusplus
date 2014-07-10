@@ -62,25 +62,25 @@ namespace GLSLPP
 		{
 		}
 
-		explicit generic_vec4(VariableType type) :
+		explicit generic_vec4(VariableQualifier type) :
 			Type(type, vec_detail::glsl_type_string(), currentProgram->GenerateName()),
 			m_Declared(type != Variable)
 		{
 		}
 
-		generic_vec4(VariableType type, int layoutPosition) :
+		generic_vec4(VariableQualifier type, int layoutPosition) :
 			Type(type, vec_detail::glsl_type_string(), currentProgram->GenerateName(), layoutPosition),
 			m_Declared(type != Variable)
 		{
 		}
 
-		generic_vec4(VariableType type, const std::string& name) :
+		generic_vec4(VariableQualifier type, const std::string& name) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Declared(type != Variable)
 		{
 		}
 
-		generic_vec4(VariableType type, const std::string& name, int layoutPosition) :
+		generic_vec4(VariableQualifier type, const std::string& name, int layoutPosition) :
 			Type(type, vec_detail::glsl_type_string(), name, layoutPosition),
 			m_Declared(type != Variable)
 		{
@@ -423,7 +423,7 @@ namespace GLSLPP
 		SWIZZLE_OP(generic_vec4, aabr); SWIZZLE_OP(generic_vec4, aabg); SWIZZLE_OP(generic_vec4, aabb); SWIZZLE_OP(generic_vec4, aaba);
 		SWIZZLE_OP(generic_vec4, aaar); SWIZZLE_OP(generic_vec4, aaag); SWIZZLE_OP(generic_vec4, aaab); SWIZZLE_OP(generic_vec4, aaaa);
 		
-		generic_vec4(VariableType type, const std::string& name, Swizzle swizzle) :
+		generic_vec4(VariableQualifier type, const std::string& name, Swizzle swizzle) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Swizzle(swizzle)
 		{

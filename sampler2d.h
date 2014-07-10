@@ -16,22 +16,22 @@ namespace GLSLPP
 		friend vec4 texelFetch(const generic_sampler2D& sampler, const ivec2& texCoords, int lod);
 
 		public:
-		explicit generic_sampler2D(VariableType type) :
+		explicit generic_sampler2D(VariableQualifier type) :
 			Type(type, detail::glsl_type_string(), currentProgram->GenerateName())
 		{
 		}
 
-		generic_sampler2D(VariableType type, int layoutLocation) :
+		generic_sampler2D(VariableQualifier type, int layoutLocation) :
 			Type(type, detail::glsl_type_string(), currentProgram->GenerateName(), layoutLocation)
 		{
 		}
 
-		generic_sampler2D(VariableType type, const std::string& name) :
+		generic_sampler2D(VariableQualifier type, const std::string& name) :
 			Type(type, detail::glsl_type_string(), name)
 		{
 		}
 
-		generic_sampler2D(VariableType type, const std::string& name, int layoutLocation) :
+		generic_sampler2D(VariableQualifier type, const std::string& name, int layoutLocation) :
 			Type(type, detail::glsl_type_string(), name, layoutLocation)
 		{
 		}

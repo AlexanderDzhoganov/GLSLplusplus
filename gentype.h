@@ -75,13 +75,13 @@ namespace GLSLPP
 		public:
 		GenType() : Type(Variable, "float", currentProgram->GenerateName()) {}
 
-		explicit GenType(VariableType type) :
+		explicit GenType(VariableQualifier type) :
 			Type(type, detail::glsl_type_string(), currentProgram->GenerateName()),
 			m_Declared(type != Variable)
 		{
 		}
 
-		GenType(VariableType type, const std::string& name) :
+		GenType(VariableQualifier type, const std::string& name) :
 			Type(type, detail::glsl_type_string(), name),
 			m_Declared(type != Variable)
 		{
@@ -220,7 +220,7 @@ namespace GLSLPP
 			}
 		}
 
-		GenType(VariableType type, std::string name, Swizzle swizzle) :
+		GenType(VariableQualifier type, std::string name, Swizzle swizzle) :
 			Type(type, vec_detail::glsl_type_string(), name),
 			m_Swizzle(swizzle)
 		{

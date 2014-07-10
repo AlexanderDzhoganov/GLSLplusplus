@@ -13,12 +13,12 @@ namespace GLSLPP
 		{
 		}
 
-		explicit mat4(VariableType type) :
+		explicit mat4(VariableQualifier type) :
 			Type(type, "mat4", currentProgram->GenerateName())
 		{
 		}
 
-		mat4(VariableType type, const std::string& name) :
+		mat4(VariableQualifier type, const std::string& name) :
 			Type(type, "mat4", name)
 		{
 		}
@@ -68,12 +68,12 @@ namespace GLSLPP
 		{
 		}
 
-		explicit dmat4(VariableType type) :
+		explicit dmat4(VariableQualifier type) :
 			Type(type, "dmat4", currentProgram->GenerateName())
 		{
 		}
 
-		dmat4(VariableType type, const std::string& name) :
+		dmat4(VariableQualifier type, const std::string& name) :
 			Type(type, "dmat4", name)
 		{
 		}
