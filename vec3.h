@@ -145,6 +145,16 @@ namespace GLSLPP
 			return t_abstract(xs("%[%]", ExtendedName(), index));
 		}
 
+		t_abstract operator [] (const Int& index) const
+		{
+			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
+		}
+
+		t_abstract operator [] (const Uint& index) const
+		{
+			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
+		}
+
 		SWIZZLE_OP(t_abstract, x); SWIZZLE_OP(t_abstract, y); SWIZZLE_OP(t_abstract, z);
 		SWIZZLE_OP(t_vec2, xx); SWIZZLE_OP(t_vec2, xy); SWIZZLE_OP(t_vec2, xz); SWIZZLE_OP(t_vec2, yx);
 		SWIZZLE_OP(t_vec2, yy); SWIZZLE_OP(t_vec2, yz); SWIZZLE_OP(t_vec2, zx); SWIZZLE_OP(t_vec2, zy);
@@ -205,39 +215,6 @@ namespace GLSLPP
 		std::string m_TemporaryInitialization;
 
 	};
-
-	class vec3_float_detail
-	{
-
-		public:
-		typedef float native_type;
-		typedef GenType<gentype_float_detail> abstract_type;
-		typedef vec2_float_detail vec2_detail;
-
-		static inline const char* glsl_type_string()
-		{
-			return "vec3";
-		}
-
-	};
-
-	class vec3_int_detail
-	{
-
-		public:
-		typedef int native_type;
-		typedef GenType<gentype_int_detail> abstract_type;
-		typedef vec2_int_detail vec2_detail;
-
-		static inline const char* glsl_type_string()
-		{
-			return "ivec3";
-		}
-
-	};
-
-	typedef generic_vec3<vec3_float_detail> vec3;
-	typedef generic_vec3<vec3_int_detail> ivec3;
 
 }
 

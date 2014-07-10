@@ -25,7 +25,72 @@ namespace GLSLPP
 
 		vec4 operator[] (size_t i) const
 		{
+			if (i > 15)
+			{
+				throw OutOfBoundsAccess();
+			}
+
 			return vec4(xs("%[%]", ExtendedName(), i));
+		}
+
+		vec4 operator[] (const Int& i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+		}
+
+		vec4 operator[] (const Uint& i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+		}
+
+		std::string ExtendedName() const
+		{
+			if (GetType() == Temporary)
+			{
+				return m_TemporaryInitialization;
+			}
+
+			return xs("%", GetName());
+		}
+
+		private:
+		bool m_Declared = true;
+		std::string m_TemporaryInitialization;
+
+	};
+
+	class dmat4 : public Type
+	{
+
+		public:
+		dmat4() :
+			Type(Variable, "dmat4", currentProgram->GenerateName())
+		{
+		}
+
+		explicit dmat4(VariableType type) :
+			Type(type, "dmat4", currentProgram->GenerateName())
+		{
+		}
+
+		dmat4(VariableType type, const std::string& name) :
+			Type(type, "dmat4", name)
+		{
+		}
+
+		dvec4 operator[] (size_t i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i));
+		}
+
+		dvec4 operator[] (const Int& i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+		}
+
+		dvec4 operator[] (const Uint& i) const
+		{
+			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
 		}
 
 		std::string ExtendedName() const

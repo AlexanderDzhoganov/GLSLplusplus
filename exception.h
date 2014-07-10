@@ -20,6 +20,10 @@ namespace GLSLPP
 	{
 	};
 
+	class OutOfBoundsAccess : public std::exception
+	{
+	};
+
 }
 
 #endif

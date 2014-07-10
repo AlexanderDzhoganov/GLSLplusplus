@@ -239,35 +239,6 @@ namespace GLSLPP
 
 	};
 
-	class gentype_float_detail
-	{
-
-		public:
-		typedef float native_type;
-
-		static inline const char* glsl_type_string()
-		{
-			return "float";
-		}
-
-	};
-
-	class gentype_int_detail
-	{
-
-		public:
-		typedef int native_type;
-
-		static inline const char* glsl_type_string()
-		{
-			return "int";
-		}
-
-	};
-
-	typedef GenType<gentype_float_detail> Float;
-	typedef GenType<gentype_int_detail> Int;
-
 }
 
 #endif

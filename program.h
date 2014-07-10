@@ -34,8 +34,15 @@ namespace GLSLPP
 		template <typename vec_detail>
 		friend class generic_vec4;
 
+		friend class mat2;
+		friend class dmat2;
+
 		friend class mat3;
+		friend class dmat3;
+
 		friend class mat4;
+		friend class dmat4;
+
 		friend class sampler2D;
 		friend class sampler2DMS;
 
@@ -123,6 +130,18 @@ namespace GLSLPP
 			m_InVertexShader = false;
 		}
 
+		template <typename F>
+		void SetVertexShader(F f)
+		{
+			m_VertexSource += "\nvoid main()\n{\n";
+			m_InVertexShader = true;
+
+			f();
+
+			m_VertexSource += "}\n";
+			m_InVertexShader = false;
+		}
+
 		void FragmentMain()
 		{
 			m_FragmentSource += "\nvoid main()\n{\n";
@@ -132,6 +151,19 @@ namespace GLSLPP
 
 		void EndFragmentMain()
 		{
+			m_InFragmentShader = false;
+			m_FragmentSource += "}\n";
+		}
+
+		template <typename F>
+		void SetFragmentShader(F f)
+		{
+			m_FragmentSource += "\nvoid main()\n{\n";
+			m_InFragmentShader = true;
+			m_InVertexShader = false;
+
+			f();
+
 			m_InFragmentShader = false;
 			m_FragmentSource += "}\n";
 		}

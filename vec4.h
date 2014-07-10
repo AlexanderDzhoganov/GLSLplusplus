@@ -16,11 +16,11 @@ namespace GLSLPP
 
 		friend class Program;
 
-		friend generic_vec4 texture(const sampler2D&, const vec2&);
-		friend generic_vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, const Int& lod);
-		friend generic_vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, int lod);
-		friend generic_vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, const Int& lod);
-		friend generic_vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, int lod);
+		friend vec4 texture(const sampler2D&, const vec2&);
+		friend vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, const Int& lod);
+		friend vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, int lod);
+		friend vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, const Int& lod);
+		friend vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, int lod);
 
 		template <typename vec_detail>
 		friend generic_vec4<vec_detail> operator+(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b);
@@ -200,6 +200,16 @@ namespace GLSLPP
 		t_abstract operator [] (int index) const
 		{
 			return t_abstract(xs("%[%]", ExtendedName(), index));
+		}
+
+		t_abstract operator [] (const Int& index) const
+		{
+			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
+		}
+
+		t_abstract operator [] (const Uint& index) const
+		{
+			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
 		}
 
 		SWIZZLE_OP(t_abstract, x); SWIZZLE_OP(t_abstract, y); SWIZZLE_OP(t_abstract, z); SWIZZLE_OP(t_abstract, w);
@@ -439,41 +449,6 @@ namespace GLSLPP
 		Swizzle m_Swizzle = Swizzle::NoSwizzle;
 
 	};
-
-	class vec4_int_detail
-	{
-
-		public:
-		typedef int native_type;
-		typedef GenType<gentype_int_detail> abstract_type;
-		typedef vec2_int_detail vec2_detail;
-		typedef vec3_int_detail vec3_detail;
-
-		static inline const char* glsl_type_string()
-		{
-			return "ivec4";
-		}
-
-	};
-
-	class vec4_float_detail
-	{
-
-		public:
-		typedef float native_type;
-		typedef GenType<gentype_float_detail> abstract_type;
-		typedef vec2_float_detail vec2_detail;
-		typedef vec3_float_detail vec3_detail;
-
-		static inline const char* glsl_type_string()
-		{
-			return "vec4";
-		}
-
-	};
-
-	typedef generic_vec4<vec4_float_detail> vec4;
-	typedef generic_vec4<vec4_int_detail> ivec4;
 
 }
 
