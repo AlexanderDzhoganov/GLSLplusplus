@@ -231,21 +231,45 @@ namespace GLSLPP
 	}
 
 	template <typename detail>
-	inline vec3 cross(const vec3& x, const vec3& y)
+	inline generic_vec3<detail> cross(const generic_vec3<detail>& x, const generic_vec3<detail>& y)
 	{
-		return vec3(xs("cross(%, %)", x.ExtendedName(), y.ExtendedName()));
+		return generic_vec3<detail>(xs("cross(%, %)", x.ExtendedName(), y.ExtendedName()));
 	}
 
-	template <typename T>
-	inline Float distance(const T& x, const T& y)
+	template <typename detail>
+	inline typename detail::abstract_type distance(const generic_vec2<detail>& x, const generic_vec2<detail>& y)
 	{
-		return Float(xs("distance(%, %)", x.ExtendedName(), y.ExtendedName()));
+		return typename detail::abstract_type(xs("distance(%, %)", x.ExtendedName(), y.ExtendedName()));
 	}
 
-	template <typename T>
-	inline Float dot(const T& x, const T& y)
+	template <typename detail>
+	inline typename detail::abstract_type distance(const generic_vec3<detail>& x, const generic_vec3<detail>& y)
 	{
-		return Float(xs("dot(%, %)", x.ExtendedName(), y.ExtendedName()));
+		return typename detail::abstract_type(xs("distance(%, %)", x.ExtendedName(), y.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline typename detail::abstract_type distance(const generic_vec4<detail>& x, const generic_vec4<detail>& y)
+	{
+		return typename detail::abstract_type(xs("distance(%, %)", x.ExtendedName(), y.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline typename detail::abstract_type dot(const generic_vec2<detail>& x, const generic_vec2<detail>& y)
+	{
+		return typename detail::abstract_type(xs("dot(%, %)", x.ExtendedName(), y.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline typename detail::abstract_type dot(const generic_vec3<detail>& x, const generic_vec3<detail>& y)
+	{
+		return typename detail::abstract_type(xs("dot(%, %)", x.ExtendedName(), y.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline typename detail::abstract_type dot(const generic_vec4<detail>& x, const generic_vec4<detail>& y)
+	{
+		return typename detail::abstract_type(xs("dot(%, %)", x.ExtendedName(), y.ExtendedName()));
 	}
 
 	template <typename T>
@@ -260,22 +284,58 @@ namespace GLSLPP
 		return Float(xs("length(%)", x.ExtendedName()));
 	}
 
-	template <typename T>
-	inline T normalize(const T& x)
+	template <typename detail>
+	inline generic_vec2<detail> normalize(const generic_vec2<detail>& x)
 	{
-		return Float(xs("normalize(%)", x.ExtendedName()));
+		return generic_vec2<detail>(xs("normalize(%)", x.ExtendedName()));
 	}
 
-	template <typename T>
-	inline T reflect(const T& i, const T& n)
+	template <typename detail>
+	inline generic_vec3<detail> normalize(const generic_vec3<detail>& x)
 	{
-		return T(xs("refract(%, %)", i.ExtendedName(), n.ExtendedName()));
+		return generic_vec3<detail>(xs("normalize(%)", x.ExtendedName()));
 	}
 
-	template <typename T>
-	inline T refract(const T& i, const T& n, float eta)
+	template <typename detail>
+	inline generic_vec4<detail> normalize(const generic_vec4<detail>& x)
 	{
-		return T(xs("refract(%, %, %)", i.ExtendedName(), n.ExtendedName(), eta));
+		return generic_vec4<detail>(xs("normalize(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline generic_vec2<detail> reflect(const generic_vec2<detail>& i, const generic_vec2<detail>& n)
+	{
+		return generic_vec2<detail>(xs("refract(%, %)", i.ExtendedName(), n.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline generic_vec3<detail> reflect(const generic_vec3<detail>& i, const generic_vec3<detail>& n)
+	{
+		return generic_vec3<detail>(xs("refract(%, %)", i.ExtendedName(), n.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline generic_vec4<detail> reflect(const generic_vec4<detail>& i, const generic_vec4<detail>& n)
+	{
+		return generic_vec4<detail>(xs("refract(%, %)", i.ExtendedName(), n.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline generic_vec2<detail> refract(const generic_vec2<detail>& i, const generic_vec2<detail>& n, float eta)
+	{
+		return generic_vec2<detail>(xs("refract(%, %, %)", i.ExtendedName(), n.ExtendedName(), eta));
+	}
+
+	template <typename detail>
+	inline generic_vec3<detail> refract(const generic_vec3<detail>& i, const generic_vec3<detail>& n, float eta)
+	{
+		return generic_vec3<detail>(xs("refract(%, %, %)", i.ExtendedName(), n.ExtendedName(), eta));
+	}
+
+	template <typename detail>
+	inline generic_vec4<detail> refract(const generic_vec4<detail>& i, const generic_vec4<detail>& n, float eta)
+	{
+		return generic_vec4<detail>(xs("refract(%, %, %)", i.ExtendedName(), n.ExtendedName(), eta));
 	}
 
 	// Fragment Processing Functions(8.8) Fragment ONLY
@@ -296,28 +356,54 @@ namespace GLSLPP
 	{
 		return T(xs("fwidth(%)", x.ExtendedName()));
 	}
-
-	inline vec4 texture(const sampler2D& sampler, const vec2& texCoords)
+	
+	template <typename detail>
+	inline typename detail::sample_type texture(const generic_sampler2D<detail>& sampler, const vec2& texCoords)
 	{
-		vec4 result(Variable);
+		typename detail::sample_type result(Variable);
 		result.m_Declared = true;
-		currentProgram->InjectCode(xs("vec4 % = texture(%, %)", result.GetName(), sampler.GetName(), texCoords.ExtendedName()));
+		currentProgram->InjectCode(xs
+		(
+			"% % = texture(%, %)",
+			result.GetTypeName(),
+			result.GetName(),
+			sampler.GetName(),
+			texCoords.ExtendedName())
+		);
 		return result;
 	}
 
-	inline vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, const Int& lod)
+	template <typename detail>
+	inline typename detail::sample_type texelFetch(const generic_sampler2D<detail>& sampler, const ivec2& texCoords, const Int& lod)
 	{
-		vec4 result(Variable);
+		typename detail::sample_type result(Variable);
 		result.m_Declared = true;
-		currentProgram->InjectCode(xs("vec4 % = texelFetch(%, %, %)", result.GetName(), sampler.GetName(), texCoords.ExtendedName(), lod.GetName()));
+		currentProgram->InjectCode(xs
+		(
+			"% % = texelFetch(%, %, %)",
+			result.GetTypeName(),
+			result.GetName(),
+			sampler.GetName(),
+			texCoords.ExtendedName(),
+			lod.GetName())
+		);
 		return result;
 	}
 
-	inline vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, int lod)
+	template <typename detail>
+	inline typename detail::sample_type texelFetch(const generic_sampler2D<detail>& sampler, const ivec2& texCoords, int lod)
 	{
-		vec4 result(Variable);
+		typename detail::sample_type result(Variable);
 		result.m_Declared = true;
-		currentProgram->InjectCode(xs("vec4 % = texelFetch(%, %, %)", result.GetName(), sampler.GetName(), texCoords.ExtendedName(), lod));
+		currentProgram->InjectCode(xs
+		(
+			"% % = texelFetch(%, %, %)",
+			result.GetTypeName(),
+			result.GetName(),
+			sampler.GetName(),
+			texCoords.ExtendedName(), 
+			lod)
+		);
 		return result;
 	}
 
@@ -325,7 +411,14 @@ namespace GLSLPP
 	{
 		vec4 result(Variable);
 		result.m_Declared = true;
-		currentProgram->InjectCode(xs("vec4 % = texelFetch(%, %, %)", result.GetName(), sampler.GetName(), texCoords.ExtendedName(), lod.GetName()));
+		currentProgram->InjectCode(xs
+		(
+			"vec4 % = texelFetch(%, %, %)",
+			result.GetName(),
+			sampler.GetName(),
+			texCoords.ExtendedName(), 
+			lod.GetName())
+		);
 		return result;
 	}
 

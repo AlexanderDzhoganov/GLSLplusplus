@@ -43,7 +43,9 @@ namespace GLSLPP
 		friend class mat4;
 		friend class dmat4;
 
-		friend class sampler2D;
+		template <typename detail>
+		friend class generic_sampler2D;
+
 		friend class sampler2DMS;
 
 		public:

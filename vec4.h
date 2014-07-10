@@ -16,11 +16,18 @@ namespace GLSLPP
 
 		friend class Program;
 
-		friend vec4 texture(const sampler2D&, const vec2&);
-		friend vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, const Int& lod);
-		friend vec4 texelFetch(const sampler2D& sampler, const ivec2& texCoords, int lod);
-		friend vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, const Int& lod);
-		friend vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, int lod);
+		template <typename detail>
+		friend typename detail::sample_type texture(const generic_sampler2D<detail>&, const vec2&);
+		
+		template <typename detail>
+		friend typename detail::sample_type texelFetch(const generic_sampler2D<detail>& sampler, const ivec2& texCoords, const Int& lod);
+
+		template <typename detail>
+		friend typename detail::sample_type texelFetch(const generic_sampler2D<detail>& sampler, const ivec2& texCoords, int lod);
+
+		friend typename vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, const Int& lod);
+
+		friend typename vec4 texelFetch(const sampler2DMS& sampler, const ivec2& texCoords, int lod);
 
 		template <typename vec_detail>
 		friend generic_vec4<vec_detail> operator+(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b);
