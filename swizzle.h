@@ -1,7 +1,7 @@
 #ifndef __GLSLPP_SWIZZLE_H
 #define __GLSLPP_SWIZZLE_H
 
-#define SWIZZLE_OP(TYPE, SWIZZLE) inline TYPE SWIZZLE () const { TYPE result; result.SetType(Temporary); result.m_TemporaryInitialization = xs("%.%", ExtendedName(), SwizzleExtension(Swizzle::SWIZZLE)); return result; }
+#define SWIZZLE_OP(TYPE, SWIZZLE) inline TYPE SWIZZLE () const { TYPE result; result.SetType(Temporary); result.m_TemporaryInitialization = xs("%.%", Definition(), SwizzleExtension(Swizzle::SWIZZLE)); return result; }
 
 #ifdef __GLC_ENABLE_SWIZZLE_MACROS
 

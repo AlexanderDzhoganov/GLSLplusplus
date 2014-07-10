@@ -30,20 +30,20 @@ namespace GLSLPP
 				throw OutOfBoundsAccess();
 			}
 
-			return vec4(xs("%[%]", ExtendedName(), i));
+			return vec4(xs("%[%]", Definition(), i));
 		}
 
 		vec4 operator[] (const Int& i) const
 		{
-			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec4(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		vec4 operator[] (const Uint& i) const
 		{
-			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec4(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{
@@ -80,20 +80,20 @@ namespace GLSLPP
 
 		dvec4 operator[] (size_t i) const
 		{
-			return vec4(xs("%[%]", ExtendedName(), i));
+			return vec4(xs("%[%]", Definition(), i));
 		}
 
 		dvec4 operator[] (const Int& i) const
 		{
-			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec4(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		dvec4 operator[] (const Uint& i) const
 		{
-			return vec4(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec4(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{

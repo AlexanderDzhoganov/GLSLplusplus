@@ -8,13 +8,13 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> operator+(const GenType<detail>& a, typename detail::native_type b)
 	{
-		return GenType<detail>(xs("(% + %)", a.ExtendedName(), b));
+		return GenType<detail>(xs("(% + %)", a.Definition(), b));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator+(const GenType<detail>& a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% + %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<detail>(xs("(% + %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename detail>
@@ -32,19 +32,19 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> operator-(const GenType<detail>& a, typename detail::native_type b)
 	{
-		return GenType<detail>(xs("(% - %)", a.ExtendedName(), b));
+		return GenType<detail>(xs("(% - %)", a.Definition(), b));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator-(typename detail::native_type a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% - %)", a, b.ExtendedName()));
+		return GenType<detail>(xs("(% - %)", a, b.Definition()));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator-(const GenType<detail>& a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% - %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<detail>(xs("(% - %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename detail>
@@ -61,24 +61,24 @@ namespace GLSLPP
 
 	inline GenType<gentype_float_detail> operator*(const GenType<gentype_float_detail>& a, const GenType<gentype_int_detail>& b)
 	{
-		return GenType<gentype_float_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<gentype_float_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	inline GenType<gentype_float_detail> operator*(const GenType<gentype_int_detail>& a, const GenType<gentype_float_detail>& b)
 	{
-		return GenType<gentype_float_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<gentype_float_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator*(const GenType<detail>& a, typename detail::native_type b)
 	{
-		return GenType<detail>(xs("(% * %)", a.ExtendedName(), b));
+		return GenType<detail>(xs("(% * %)", a.Definition(), b));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator*(const GenType<detail>& a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename detail>
@@ -96,13 +96,13 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> operator/(const GenType<detail>& a, typename detail::native_type b)
 	{
-		return GenType<detail>(xs("(% / %)", a.ExtendedName(), b));
+		return GenType<detail>(xs("(% / %)", a.Definition(), b));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator/(const GenType<detail>& a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<detail>(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename detail>
@@ -120,19 +120,19 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> operator%(const GenType<detail>& a, typename detail::native_type b)
 	{
-		return GenType<detail>(xs("(% %% %)", a.ExtendedName(), b));
+		return GenType<detail>(xs("(% %% %)", a.Definition(), b));
 	}
 
 	template <typename detail>
 	inline GenType<detail> operator%(const GenType<detail>& a, const GenType<detail>& b)
 	{
-		return GenType<detail>(xs("(% %% %)", a.ExtendedName(), b.ExtendedName()));
+		return GenType<detail>(xs("(% %% %)", a.Definition(), b.Definition()));
 	}
 
 	// vec2 operators
 	inline vec2 operator+(const vec2& a, const vec2& b)
 	{
-		return vec2(xs("(% + %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% + %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator+=(vec2& a, const vec2& b)
@@ -142,7 +142,7 @@ namespace GLSLPP
 
 	inline vec2 operator-(const vec2& a, const vec2& b)
 	{
-		return vec2(xs("(% - %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% - %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator-=(vec2& a, const vec2& b)
@@ -152,7 +152,7 @@ namespace GLSLPP
 
 	inline vec2 operator*(const vec2& a, const vec2& b)
 	{
-		return vec2(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator*=(vec2& a, const vec2& b)
@@ -162,7 +162,7 @@ namespace GLSLPP
 
 	inline vec2 operator/(const vec2& a, const vec2& b)
 	{
-		return vec2(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator/=(vec2& a, const vec2& b)
@@ -172,7 +172,7 @@ namespace GLSLPP
 
 	inline vec2 operator*(const vec2& a, const Float& b)
 	{
-		return vec2(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator*=(vec2& a, const Float& b)
@@ -182,7 +182,7 @@ namespace GLSLPP
 
 	inline vec2 operator/(const vec2& a, const Float& b)
 	{
-		return vec2(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return vec2(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	inline void operator/=(vec2& a, const Float& b)
@@ -192,7 +192,7 @@ namespace GLSLPP
 
 	inline vec2 operator*(const vec2& a, float b)
 	{
-		return vec2(xs("(% * %)", a.ExtendedName(), b));
+		return vec2(xs("(% * %)", a.Definition(), b));
 	}
 
 	inline void operator*=(vec2& a, float b)
@@ -202,7 +202,7 @@ namespace GLSLPP
 
 	inline vec2 operator/(const vec2& a, float b)
 	{
-		return vec2(xs("(% / %)", a.ExtendedName(), b));
+		return vec2(xs("(% / %)", a.Definition(), b));
 	}
 
 	inline void operator/=(vec2& a, float b)
@@ -214,7 +214,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator+(const generic_vec3<vec_detail>& a, const generic_vec3<vec_detail>& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% + %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% + %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -226,7 +226,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator-(const generic_vec3<vec_detail>& a, const generic_vec3<vec_detail>& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% - %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% - %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -238,7 +238,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator*(const generic_vec3<vec_detail>& a, const generic_vec3<vec_detail>& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -250,7 +250,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator/(const generic_vec3<vec_detail>& a, const generic_vec3<vec_detail>& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -262,19 +262,19 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator*(const generic_vec3<vec_detail>& a, const Float& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator/(const generic_vec3<vec_detail>& a, const Float& b)
 	{
-		return generic_vec3<vec_detail>(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator*(const generic_vec3<vec_detail>& a, float b)
 	{
-		return generic_vec3<vec_detail>(xs("(% * %)", a.ExtendedName(), b));
+		return generic_vec3<vec_detail>(xs("(% * %)", a.Definition(), b));
 	}
 
 	template <typename vec_detail>
@@ -292,7 +292,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator/(const generic_vec3<vec_detail>& a, float b)
 	{
-		return generic_vec3<vec_detail>(xs("(% / %)", a.ExtendedName(), b));
+		return generic_vec3<vec_detail>(xs("(% / %)", a.Definition(), b));
 	}
 
 	template <typename vec_detail>
@@ -305,7 +305,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator+(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% + %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% + %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -317,7 +317,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator-(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% - %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% - %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -329,7 +329,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator*(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -341,7 +341,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator/(const generic_vec4<vec_detail>& a, const generic_vec4<vec_detail>& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
@@ -353,19 +353,19 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator*(const generic_vec4<vec_detail>& a, const Float& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% * %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% * %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator/(const generic_vec4<vec_detail>& a, const Float& b)
 	{
-		return generic_vec4<vec_detail>(xs("(% / %)", a.ExtendedName(), b.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% / %)", a.Definition(), b.Definition()));
 	}
 
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator*(const generic_vec4<vec_detail>& a, float b)
 	{
-		return generic_vec4<vec_detail>(xs("(% * %)", a.ExtendedName(), b));
+		return generic_vec4<vec_detail>(xs("(% * %)", a.Definition(), b));
 	}
 
 	template <typename vec_detail>
@@ -383,7 +383,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator/(const generic_vec4<vec_detail>& a, float b)
 	{
-		return generic_vec4<vec_detail>(xs("(% / %)", a.ExtendedName(), b));
+		return generic_vec4<vec_detail>(xs("(% / %)", a.Definition(), b));
 	}
 
 	template <typename vec_detail>
@@ -396,14 +396,14 @@ namespace GLSLPP
 	template <typename vec_detail>
 	inline generic_vec3<vec_detail> operator*(const mat3& m, const generic_vec3<vec_detail>& v)
 	{
-		return generic_vec3<vec_detail>(xs("(% * %)", m.ExtendedName(), v.ExtendedName()));
+		return generic_vec3<vec_detail>(xs("(% * %)", m.Definition(), v.Definition()));
 	}
 
 	// mat4 operators
 	template <typename vec_detail>
 	inline generic_vec4<vec_detail> operator*(const mat4& m, const generic_vec4<vec_detail>& v)
 	{
-		return generic_vec4<vec_detail>(xs("(% * %)", m.ExtendedName(), v.ExtendedName()));
+		return generic_vec4<vec_detail>(xs("(% * %)", m.Definition(), v.Definition()));
 	}
 
 }

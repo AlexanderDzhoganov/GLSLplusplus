@@ -60,26 +60,26 @@ namespace GLSLPP
 		template <typename T>
 		generic_vec2(const generic_vec2<T>& value) :
 			Type(Temporary, vec_detail::glsl_type_string(), currentProgram->GenerateName()),
-			m_TemporaryInitialization(xs("%(%)", vec_detail::glsl_type_string(), value.ExtendedName()))
+			m_TemporaryInitialization(xs("%(%)", vec_detail::glsl_type_string(), value.Definition()))
 		{
 		}
 
 		template <typename detail_1, typename detail_2>
 		generic_vec2(const GenType<detail_1>& x, const GenType<detail_2>& y) :
 			Type(Temporary, vec_detail::glsl_type_string(), currentProgram->GenerateName()),
-			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x.ExtendedName(), y.ExtendedName()))
+			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x.Definition(), y.Definition()))
 		{
 		}
 		
 		generic_vec2(t_native x, const t_abstract& y) :
 			Type(Temporary, vec_detail::glsl_type_string(), currentProgram->GenerateName()),
-			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x, y.ExtendedName()))
+			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x, y.Definition()))
 		{
 		}
 
 		generic_vec2(const t_abstract& x, t_native y) :
 			Type(Temporary, vec_detail::glsl_type_string(), currentProgram->GenerateName()),
-			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x.ExtendedName(), y))
+			m_TemporaryInitialization(xs("%(%, %)", vec_detail::glsl_type_string(), x.Definition(), y))
 		{
 		}
 
@@ -98,12 +98,12 @@ namespace GLSLPP
 
 			if (!m_Declared)
 			{
-				currentProgram->InjectCode(xs("% % = %", vec_detail::glsl_type_string(), GetName(), v.ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %", vec_detail::glsl_type_string(), GetName(), v.Definition()));
 				m_Declared = true;
 			}
 			else
 			{
-				currentProgram->InjectCode(xs("% = %", GetName(), v.ExtendedName()));
+				currentProgram->InjectCode(xs("% = %", GetName(), v.Definition()));
 			}
 
 			return *this;
@@ -126,13 +126,13 @@ namespace GLSLPP
 			{
 				if (!m_Declared)
 				{
-					currentProgram->InjectCode(xs("% % = %", vec_detail::glsl_type_string(), GetName(), v.ExtendedName()));
+					currentProgram->InjectCode(xs("% % = %", vec_detail::glsl_type_string(), GetName(), v.Definition()));
 					m_Declared = true;
 					SetType(Variable);
 				}
 				else
 				{
-					currentProgram->InjectCode(xs("% = %", GetName(), v.ExtendedName()));
+					currentProgram->InjectCode(xs("% = %", GetName(), v.Definition()));
 				}
 			}
 
@@ -142,17 +142,17 @@ namespace GLSLPP
 
 		t_abstract operator [] (int index) const
 		{
-			return t_abstract(xs("%[%]", ExtendedName(), index));
+			return t_abstract(xs("%[%]", Definition(), index));
 		}
 
 		t_abstract operator [] (const Int& index) const
 		{
-			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
+			return t_abstract(xs("%[%]", Definition(), index.Definition()));
 		}
 
 		t_abstract operator [] (const Uint& index) const
 		{
-			return t_abstract(xs("%[%]", ExtendedName(), index.ExtendedName()));
+			return t_abstract(xs("%[%]", Definition(), index.Definition()));
 		}
 
 		SWIZZLE_OP(t_abstract, x); SWIZZLE_OP(t_abstract, y);
@@ -161,7 +161,7 @@ namespace GLSLPP
 		SWIZZLE_OP(t_abstract, r); SWIZZLE_OP(t_abstract, g); SWIZZLE_OP(t_abstract, b); SWIZZLE_OP(t_abstract, a);
 		SWIZZLE_OP(generic_vec2, rr); SWIZZLE_OP(generic_vec2, rg); SWIZZLE_OP(generic_vec2, gr); SWIZZLE_OP(generic_vec2, gg);
 
-		inline std::string ExtendedName() const
+		inline std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{

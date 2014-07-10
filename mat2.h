@@ -16,20 +16,20 @@ namespace GLSLPP
 
 		vec2 operator[] (size_t i) const
 		{
-			return vec2(xs("%[%]", ExtendedName(), i));
+			return vec2(xs("%[%]", Definition(), i));
 		}
 
 		vec2 operator[] (const Int& i) const
 		{
-			return vec2(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec2(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		vec2 operator[] (const Uint& i) const
 		{
-			return vec2(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec2(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{
@@ -57,20 +57,20 @@ namespace GLSLPP
 
 		dvec2 operator[] (size_t i) const
 		{
-			return dvec2(xs("%[%]", ExtendedName(), i));
+			return dvec2(xs("%[%]", Definition(), i));
 		}
 
 		dvec2 operator[] (const Int& i) const
 		{
-			return dvec2(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return dvec2(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		dvec2 operator[] (const Uint& i) const
 		{
-			return dvec2(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return dvec2(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{

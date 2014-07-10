@@ -87,7 +87,7 @@ namespace GLSLPP
 		{
 		}
 
-		GenType(float f) :
+		GenType(typename detail::native_type f) :
 			Type(Temporary, detail::glsl_type_string(), currentProgram->GenerateName()),
 			m_TemporaryInitialization(xs("%", f))
 		{
@@ -103,7 +103,7 @@ namespace GLSLPP
 			}
 			else
 			{
-				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.Definition()));
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace GLSLPP
 			}
 			else
 			{
-				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.Definition()));
 			}
 		}
 
@@ -133,7 +133,7 @@ namespace GLSLPP
 			}
 			else
 			{
-				currentProgram->InjectCode(xs("% % = %(%)", detail::glsl_type_string(), GetName(), detail::glsl_type_string(), f.ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %(%)", detail::glsl_type_string(), GetName(), detail::glsl_type_string(), f.Definition()));
 			}
 		}
 
@@ -160,11 +160,11 @@ namespace GLSLPP
 
 			if (GetType() == Variable)
 			{
-				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.Definition()));
 			}
 			else
 			{
-				currentProgram->InjectCode(xs("% = %", GetName(), f.ExtendedName()));
+				currentProgram->InjectCode(xs("% = %", GetName(), f.Definition()));
 			}
 
 			return *this;
@@ -184,18 +184,18 @@ namespace GLSLPP
 			{
 				if (GetType() == Variable)
 				{
-					currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.ExtendedName()));
+					currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), f.Definition()));
 				}
 				else
 				{
-					currentProgram->InjectCode(xs("% = %", ExtendedName(), f.ExtendedName()));
+					currentProgram->InjectCode(xs("% = %", Definition(), f.Definition()));
 				}
 			}
 
 			return *this;
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{
@@ -214,7 +214,7 @@ namespace GLSLPP
 		{
 			if (!m_Declared || GetType() == Temporary)
 			{
-				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), ExtendedName()));
+				currentProgram->InjectCode(xs("% % = %", detail::glsl_type_string(), GetName(), Definition()));
 				m_Declared = true;
 				SetType(Variable);
 			}

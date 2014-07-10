@@ -31,6 +31,7 @@ namespace GLSLPP
 #include "sampler2dms.h"
 #include "trig_functions.h"
 #include "exp_functions.h"
+#include "common_functions.h"
 #include "functions.h"
 #include "operators.h"
 #include "controlflow.h"

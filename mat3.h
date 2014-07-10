@@ -16,20 +16,20 @@ namespace GLSLPP
 
 		vec3 operator[] (size_t i) const
 		{
-			return vec3(xs("%[%]", ExtendedName(), i));
+			return vec3(xs("%[%]", Definition(), i));
 		}
 
 		vec3 operator[] (const Int& i) const
 		{
-			return vec3(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec3(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		vec3 operator[] (const Uint& i) const
 		{
-			return vec3(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return vec3(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{
@@ -57,20 +57,20 @@ namespace GLSLPP
 
 		dvec3 operator[] (size_t i) const
 		{
-			return dvec3(xs("%[%]", ExtendedName(), i));
+			return dvec3(xs("%[%]", Definition(), i));
 		}
 
 		dvec3 operator[] (const Int& i) const
 		{
-			return dvec3(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return dvec3(xs("%[%]", Definition(), i.Definition()));
 		}
 
 		dvec3 operator[] (const Uint& i) const
 		{
-			return dvec3(xs("%[%]", ExtendedName(), i.ExtendedName()));
+			return dvec3(xs("%[%]", Definition(), i.Definition()));
 		}
 
-		std::string ExtendedName() const
+		std::string Definition() const
 		{
 			if (GetType() == Temporary)
 			{

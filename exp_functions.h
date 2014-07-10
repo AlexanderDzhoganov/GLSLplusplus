@@ -10,17 +10,17 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> pow(const GenType<detail>& x, const GenType<detail>& y)
 	{
-		return GenType<detail>(xs("pow(%, %)", x.ExtendedName(), y.ExtendedName()));
+		return GenType<detail>(xs("pow(%, %)", x.Definition(), y.Definition()));
 	}
 
 	inline Float pow(const Float& x, float y)
 	{
-		return Float(xs("pow(%, %)", x.ExtendedName(), y));
+		return Float(xs("pow(%, %)", x.Definition(), y));
 	}
 
 	inline Float pow(float x, const Float& y)
 	{
-		return Float(xs("pow(%, %)", x, y.ExtendedName()));
+		return Float(xs("pow(%, %)", x, y.Definition()));
 	}
 
 	inline Float pow(float x, float y)
@@ -30,12 +30,12 @@ namespace GLSLPP
 
 	inline Double pow(const Double& x, double y)
 	{
-		return Double(xs("pow(%, %)", x.ExtendedName(), y));
+		return Double(xs("pow(%, %)", x.Definition(), y));
 	}
 
 	inline Double pow(double x, const Double& y)
 	{
-		return Double(xs("pow(%, %)", x, y.ExtendedName()));
+		return Double(xs("pow(%, %)", x, y.Definition()));
 	}
 
 	inline Double pow(double x, double y)
@@ -47,7 +47,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> exp(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("exp(%)", x.ExtendedName()));
+		return GenType<detail>(xs("exp(%)", x.Definition()));
 	}
 
 	inline Float exp(float x)
@@ -64,7 +64,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> log(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("log(%)", x.ExtendedName()));
+		return GenType<detail>(xs("log(%)", x.Definition()));
 	}
 
 	inline Float log(float x)
@@ -81,7 +81,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> exp2(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("exp2(%)", x.ExtendedName()));
+		return GenType<detail>(xs("exp2(%)", x.Definition()));
 	}
 
 	inline Float exp2(float x)
@@ -98,7 +98,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> log2(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("log2(%)", x.ExtendedName()));
+		return GenType<detail>(xs("log2(%)", x.Definition()));
 	}
 
 	inline Float log2(float x)
@@ -110,7 +110,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> sqrt(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("sqrt(%)", x.ExtendedName()));
+		return GenType<detail>(xs("sqrt(%)", x.Definition()));
 	}
 
 	inline Float sqrt(float x)
@@ -127,7 +127,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> inversesqrt(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("inversesqrt(%)", x.ExtendedName()));
+		return GenType<detail>(xs("inversesqrt(%)", x.Definition()));
 	}
 
 	inline Float inversesqrt(float x)

@@ -10,7 +10,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> radians(const GenType<detail>& degrees)
 	{
-		return GenType<detail>(xs("radians(%)", degrees.ExtendedName()));
+		return GenType<detail>(xs("radians(%)", degrees.Definition()));
 	}
 
 	inline Float radians(float degrees)
@@ -27,7 +27,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> degrees(const GenType<detail>& radians)
 	{
-		return GenType<detail>(xs("degrees(%)", radians.ExtendedName()));
+		return GenType<detail>(xs("degrees(%)", radians.Definition()));
 	}
 
 	inline Float degrees(float radians)
@@ -44,7 +44,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> sin(const GenType<detail>& angle)
 	{
-		return GenType<detail>(xs("sin(%)", angle.ExtendedName()));
+		return GenType<detail>(xs("sin(%)", angle.Definition()));
 	}
 
 	inline Float sin(float angle)
@@ -61,7 +61,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> cos(const GenType<detail>& angle)
 	{
-		return GenType<detail>(xs("cos(%)", angle.ExtendedName()));
+		return GenType<detail>(xs("cos(%)", angle.Definition()));
 	}
 
 	inline Float cos(float angle)
@@ -78,7 +78,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> tan(const GenType<detail>& angle)
 	{
-		return GenType<detail>(xs("tan(%)", angle.ExtendedName()));
+		return GenType<detail>(xs("tan(%)", angle.Definition()));
 	}
 
 	inline Float tan(float angle)
@@ -95,7 +95,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> asin(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("asin(%)", x.ExtendedName()));
+		return GenType<detail>(xs("asin(%)", x.Definition()));
 	}
 
 	inline Float asin(float x)
@@ -112,7 +112,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> acos(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("acos(%)", x.ExtendedName()));
+		return GenType<detail>(xs("acos(%)", x.Definition()));
 	}
 
 	inline Float acos(float x)
@@ -129,17 +129,17 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> atan(const GenType<detail>& y, const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("atan(%, %)", y.ExtendedName(), x.ExtendedName()));
+		return GenType<detail>(xs("atan(%, %)", y.Definition(), x.Definition()));
 	}
 
 	inline Float atan(float y, const Float& x)
 	{
-		return Float(xs("atan(%, %)", y, x.ExtendedName()));
+		return Float(xs("atan(%, %)", y, x.Definition()));
 	}
 
 	inline Float atan(const Float& y, float x)
 	{
-		return Float(xs("atan(%, %)", y.ExtendedName(), x));
+		return Float(xs("atan(%, %)", y.Definition(), x));
 	}
 
 	inline Float atan(float y, float x)
@@ -149,12 +149,12 @@ namespace GLSLPP
 
 	inline Double atan(double y, const Double& x)
 	{
-		return Double(xs("atan(%, %)", y, x.ExtendedName()));
+		return Double(xs("atan(%, %)", y, x.Definition()));
 	}
 
 	inline Double atan(const Double& y, double x)
 	{
-		return Double(xs("atan(%, %)", y.ExtendedName(), x));
+		return Double(xs("atan(%, %)", y.Definition(), x));
 	}
 
 	inline Double atan(double y, double x)
@@ -166,7 +166,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> atan(const GenType<detail>& y_over_x)
 	{
-		return GenType<detail>(xs("atan(%)", y_over_x.ExtendedName()));
+		return GenType<detail>(xs("atan(%)", y_over_x.Definition()));
 	}
 
 	inline Float atan(float y_over_x)
@@ -183,7 +183,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> sinh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("sinh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("sinh(%)", x.Definition()));
 	}
 
 	inline Float sinh(float x)
@@ -200,7 +200,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> cosh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("cosh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("cosh(%)", x.Definition()));
 	}
 
 	inline Float cosh(float x)
@@ -217,7 +217,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> tanh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("tanh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("tanh(%)", x.Definition()));
 	}
 
 	inline Float tanh(float x)
@@ -234,7 +234,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> asinh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("asinh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("asinh(%)", x.Definition()));
 	}
 
 	inline Float asinh(float x)
@@ -251,7 +251,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> acosh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("acosh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("acosh(%)", x.Definition()));
 	}
 
 	inline Float acosh(float x)
@@ -268,7 +268,7 @@ namespace GLSLPP
 	template <typename detail>
 	inline GenType<detail> atanh(const GenType<detail>& x)
 	{
-		return GenType<detail>(xs("atanh(%)", x.ExtendedName()));
+		return GenType<detail>(xs("atanh(%)", x.Definition()));
 	}
 
 	inline Float atanh(float x)
