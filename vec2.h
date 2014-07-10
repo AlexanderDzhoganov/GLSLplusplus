@@ -9,14 +9,15 @@ namespace GLSLPP
 	{
 
 		private:
-		typedef typename vec_detail::abstract_type t_abstract;
-		typedef typename vec_detail::native_type t_native;
-
 		template <typename vec_detail>
 		friend class generic_vec3;
 
 		template <typename vec_detail>
 		friend class generic_vec4;
+
+		public:
+		typedef typename vec_detail::abstract_type t_abstract;
+		typedef typename vec_detail::native_type t_native;
 
 		friend generic_vec2 operator+(const generic_vec2&, const generic_vec2&);
 		friend generic_vec2 operator-(const generic_vec2&, const generic_vec2&);
@@ -27,7 +28,6 @@ namespace GLSLPP
 		friend generic_vec2 operator*(const generic_vec2&, t_native);
 		friend generic_vec2 operator/(const generic_vec2&, t_native);
 
-		public:
 		generic_vec2() :
 			Type(Variable, vec_detail::glsl_type_string(), currentProgram->GenerateName())
 		{

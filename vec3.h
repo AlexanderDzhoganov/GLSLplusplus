@@ -7,8 +7,7 @@ namespace GLSLPP
 	template <typename vec_detail>
 	class generic_vec3 : public Type
 	{
-
-		private:
+		public:
 		typedef generic_vec2<typename vec_detail::vec2_detail> t_vec2;
 		typedef typename vec_detail::abstract_type t_abstract;
 		typedef typename vec_detail::native_type t_native;
@@ -43,7 +42,6 @@ namespace GLSLPP
 		template <typename vec_detail>
 		friend generic_vec3<vec_detail> operator*(const mat3&, const generic_vec3<vec_detail>&);
 
-		public:
 		generic_vec3() :
 			Type(Variable, vec_detail::glsl_type_string(), currentProgram->GenerateName())
 		{

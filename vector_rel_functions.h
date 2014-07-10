@@ -1,0 +1,11 @@
+#ifndef __GLSLPPP_VECTOR_REL_FUNCTIONS_H
+#define __GLSLPPP_VECTOR_REL_FUNCTIONS_H
+
+namespace GLSLPP
+{
+
+
+
+}
+
+#endif
