@@ -73,7 +73,7 @@ void main()
 **Note: GLSL++ is still in rapid development (as in, not everything works correctly, not all GLSL features are supported and syntax may change at any time). Pull requests are welcome.**
 
 Currently supported GLSL features:
-* Types: int, float, vec2, vec3, vec4, mat3, mat4, sampler2D, sampler2DMS
+* Types: bool, int, uint, float, double, bvecN, ivecN, uvecN, vecN, dvecN, matN, sampler2D, sampler2DMS
 * All GLSL functions as of GLSL 4.40
 * Attribute layout
 * Uniform binding
@@ -83,8 +83,8 @@ Currently supported GLSL features:
 * Extensions: GL_ARB_explicit_attrib_location, GL_ARB_explicit_uniform_location, GL_ARB_shading_language_420pack
 
 Not supported:
-* Function definitions
 * matNxM
+* Uniform arrays
 * Uniform blocks
 * Geometry shaders
 * Compute shaders
