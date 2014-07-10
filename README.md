@@ -9,6 +9,8 @@ The goal of the library is twofold:
 
 This approach also greatly simplifies writing (uber-)shaders that depend on run-time parameters without the #ifdef clutter.
 
+**Note: GLSL++ is still in early stages of development (as in, not everything works correctly, not all GLSL features are supported and syntax may change at any time). Pull requests are welcome.**
+
 **Example:**
 The following C++ code:
 
@@ -109,8 +111,6 @@ void main()
     ColorOut = vec4((DiffuseColor * dot(temp_3, LightDirection)), 1.000000e+000);
 }
 ```
-
-**Note: GLSL++ is still in rapid development (as in, not everything works correctly, not all GLSL features are supported and syntax may change at any time). Pull requests are welcome.**
 
 Currently supported GLSL features:
 * Types: bool, int, uint, float, double, bvecN, ivecN, uvecN, vecN, dvecN, matN, sampler2D, sampler2DMS
