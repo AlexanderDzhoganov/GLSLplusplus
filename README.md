@@ -126,8 +126,7 @@ Not supported:
 * matNxM
 * Uniform arrays
 * Uniform blocks
-* Geometry shaders
-* Compute shaders
+* Geometry, compute and tessalate shaders
 * GLSL macros
 * const
 * control flow - for
