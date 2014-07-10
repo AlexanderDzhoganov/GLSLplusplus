@@ -13,60 +13,100 @@ This approach also greatly simplifies writing (uber-)shaders that depend on run-
 The following C++ code:
 
 ```
-Program program;
+#include <glsl++.h>
 
-vec3 position_in(VertexIn, "PositionIn", 0);
-vec2 uvs_in(VertexIn, "UVsIn", 1);
+using namespace GLSLPP;
 
-vec4 gl_Position(VertexOut, "gl_Position");
-vec2 uvs_out(VertexOut, "UVsOut");
+void SimpleDiffuseVertex
+(
+	const vec4& position,
+	const vec4& normal,
+	const mat4& modelViewProj,
+	const mat4& inverseTransposeViewProj,
+	vec3& worldNormal,
+	vec4& gl_Position
+)
+{
+	vec4 worldPosition = modelViewProj * vec4(position.xyz(), 1.0);
+	worldNormal = (inverseTransposeViewProj * vec4(normal.xyz(), 0.0)).xyz();
+	gl_Position = vec4(worldPosition.xyz(), 1.0);
+}
 
-// vertex main()
-program.VertexMain();
+void SimpleDiffuseFragment
+(
+	const vec3& diffuseColor,
+	const vec3& lightDirection,
+	const vec3& worldNormal,
+	vec4& colorOut
+)
+{
+	Float d = dot(worldNormal, lightDirection);
+	colorOut = vec4(diffuseColor * d, 1.0);
+}
 
-gl_Position = vec4(position_in.xy(), 1.0, 1.0);
-uvs_out = uvs_in;
+int main()
+{
+	Program program(GLSLVersion::GLSL440);
+	program.EnableExtension(GL_ARB_explicit_attrib_location);
 
-program.EndVertexMain();
-//
+	// vertex shader definitions
+	vec4 position(VertexIn, 0);
+	vec4 normal(VertexIn, 1);
 
-sampler2D source(FragmentUniform, "Source");
-vec4 fragment(FragmentOut);
+	mat4 modelViewProj(VertexUniform, "ModelViewProjection");
+	mat4 inverseTransposeViewProj(VertexUniform, "InverseTransposeViewProjection");
 
-// fragment main()
-program.FragmentMain("main");
+	vec3 worldNormal(VertexOut);
+	vec4 gl_Position(VertexOut, "gl_Position");
 
-fragment = vec4(texture(source, uvs_out).rgb(), 1.0);
+	// vertex main()
+	program.SetVertexShader([&]() { SimpleDiffuseVertex(position, normal, modelViewProj, inverseTransposeViewProj, worldNormal, gl_Position); });
 
-program.EndFragmentMain();
+	// fragment shader definitions
+	vec4 colorOut(FragmentOut, "ColorOut");
+
+	vec3 diffuseColor(FragmentUniform, "DiffuseColor");
+	vec3 lightDirection(FragmentUniform, "LightDirection");
+
+	// fragment main()
+	program.SetFragmentShader([&]() { SimpleDiffuseFragment(diffuseColor, lightDirection, worldNormal, colorOut); });
+}
 ```
 
 translates to:
 
 Vertex shader:
 ```
-in (layout=0) vec3 PositionIn;
-in (layout=1) vec2 UVsIn;
+#version 440
+
+#extension GL_ARB_explicit_attrib_location : enable
+layout(location = 0) in vec4 temp_1;
+layout(location = 1) in vec4 temp_2;
+uniform mat4 ModelViewProjection;
+uniform mat4 InverseTransposeViewProjection;
+out vec3 temp_3;
 out vec4 gl_Position;
-out vec2 UVsOut;
 
 void main()
 {
-    gl_Position = vec4(PositionIn.xy, 1, 1);
-    UVsOut = UVsIn;
+    temp_3 = (InverseTransposeViewProjection * vec4(temp_2.xyz, 0.000000e+000)).xyz;
+    gl_Position = vec4((ModelViewProjection * vec4(temp_1.xyz, 1.000000e+000)).xyz, 1.000000e+000);
 }
 ```
 
 Fragment shader:
 ```
-in vec2 UVsOut;
-uniform sampler2D Source;
-out vec4 temp_4;
+#version 440
+
+#extension GL_ARB_explicit_attrib_location : enable
+in vec3 temp_3;
+out vec4 ColorOut;
+uniform vec3 DiffuseColor;
+uniform vec3 LightDirection;
 
 void main()
 {
-    vec4 temp_5 = texture(Source, UVsOut);
-    temp_4 = vec4(temp_5.xyz, 1);
+    ColorOut = vec4((DiffuseColor * dot(temp_3, LightDirection)), 1.000000e+000);
 }
 ```
 
