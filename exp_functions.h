@@ -7,132 +7,52 @@ namespace GLSLPP
 	//Exponential Functions(8.2)
 
 	// genType pow (genType x, genType y)
-	template <typename detail>
-	inline GenType<detail> pow(const GenType<detail>& x, const GenType<detail>& y)
+	template <typename T>
+	inline typename AbstractType<T>::type pow(const T& x, const T& y)
 	{
-		return GenType<detail>(xs("pow(%, %)", x.Definition(), y.Definition()));
-	}
-
-	inline Float pow(const Float& x, float y)
-	{
-		return Float(xs("pow(%, %)", x.Definition(), y));
-	}
-
-	inline Float pow(float x, const Float& y)
-	{
-		return Float(xs("pow(%, %)", x, y.Definition()));
-	}
-
-	inline Float pow(float x, float y)
-	{
-		return Float(xs("pow(%, %)", x, y));
-	}
-
-	inline Double pow(const Double& x, double y)
-	{
-		return Double(xs("pow(%, %)", x.Definition(), y));
-	}
-
-	inline Double pow(double x, const Double& y)
-	{
-		return Double(xs("pow(%, %)", x, y.Definition()));
-	}
-
-	inline Double pow(double x, double y)
-	{
-		return Double(xs("pow(%, %)", x, y));
+		return xs("pow(%, %)", x, y);
 	}
 
 	// genType exp (genType x)
-	template <typename detail>
-	inline GenType<detail> exp(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type exp(const T& x)
 	{
-		return GenType<detail>(xs("exp(%)", x.Definition()));
-	}
-
-	inline Float exp(float x)
-	{
-		return Float(xs("exp(%)", x));
-	}
-
-	inline Double exp(double x)
-	{
-		return Double(xs("exp(%)", x));
+		return xs("exp(%)", x);
 	}
 
 	// genType log (genType x) 
-	template <typename detail>
-	inline GenType<detail> log(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type log(const T& x)
 	{
-		return GenType<detail>(xs("log(%)", x.Definition()));
-	}
-
-	inline Float log(float x)
-	{
-		return Float(xs("log(%)", x));
-	}
-
-	inline Double log(double x)
-	{
-		return Double(xs("log(%)", x));
+		return xs("log(%)", x);
 	}
 
 	// genType exp2 (genType x) 
-	template <typename detail>
-	inline GenType<detail> exp2(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type exp2(const T& x)
 	{
-		return GenType<detail>(xs("exp2(%)", x.Definition()));
-	}
-
-	inline Float exp2(float x)
-	{
-		return Float(xs("exp2(%)", x));
-	}
-
-	inline Double exp2(double x)
-	{
-		return Double(xs("exp2(%)", x));
+		return xs("exp2(%)", x);
 	}
 
 	// genType log2 (genType x)
-	template <typename detail>
-	inline GenType<detail> log2(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type log2(const T& x)
 	{
-		return GenType<detail>(xs("log2(%)", x.Definition()));
-	}
-
-	inline Float log2(float x)
-	{
-		return Float(xs("log2(%)", x));
+		return xs("log2(%)", x);
 	}
 
 	// genType sqrt (genType x)
-	template <typename detail>
-	inline GenType<detail> sqrt(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type sqrt(const T& x)
 	{
-		return GenType<detail>(xs("sqrt(%)", x.Definition()));
-	}
-
-	inline Float sqrt(float x)
-	{
-		return Float(xs("sqrt(%)", x));
-	}
-
-	inline Double sqrt(double x)
-	{
-		return Double(xs("sqrt(%)", x));
+		return xs("sqrt(%)", x);
 	}
 
 	// genType inversesqrt (genType x)
-	template <typename detail>
-	inline GenType<detail> inversesqrt(const GenType<detail>& x)
+	template <typename T>
+	inline typename AbstractType<T>::type inversesqrt(const T& x)
 	{
-		return GenType<detail>(xs("inversesqrt(%)", x.Definition()));
-	}
-
-	inline Float inversesqrt(float x)
-	{
-		return Float(xs("inversesqrt(%)", x));
+		return xs("inversesqrt(%)", x);
 	}
 
 }

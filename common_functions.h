@@ -7,155 +7,155 @@ namespace GLSLPP
 	// Common Functions(8.3)
 
 	template <typename T>
-	inline T abs(const T& x)
+	inline typename AbstractType<T>::type abs(const T& x)
 	{
-		return T(xs("abs(%)", x.Definition()));
+		return xs("abs(%)", x);
 	}
 
 	template <typename T>
-	inline T sign(const T& x)
+	inline typename AbstractType<T>::type sign(const T& x)
 	{
-		return T(xs("sign(%)", x.Definition()));
+		return xs("sign(%)", x);
 	}
 
 	template <typename T>
-	inline T floor(const T& x)
+	inline typename AbstractType<T>::type floor(const T& x)
 	{
-		return T(xs("floor(%)", x.Definition()));
+		return xs("floor(%)", x);
 	}
 
 	template <typename T>
-	inline T trunc(const T& x)
+	inline typename AbstractType<T>::type trunc(const T& x)
 	{
-		return T(xs("trunc(%)", x.Definition()));
+		return xs("trunc(%)", x);
 	}
 
 	template <typename T>
-	inline T round(const T& x)
+	inline typename AbstractType<T>::type round(const T& x)
 	{
-		return T(xs("round(%)", x.Definition()));
+		return xs("round(%)", x);
 	}
 
 	template <typename T>
-	inline T roundEven(const T& x)
+	inline typename AbstractType<T>::type roundEven(const T& x)
 	{
-		return T(xs("roundEven(%)", x.Definition()));
+		return xs("roundEven(%)", x);
 	}
 
 	template <typename T>
-	inline T ceil(const T& x)
+	inline typename AbstractType<T>::type ceil(const T& x)
 	{
-		return T(xs("ceil(%)", x.Definition()));
+		return xs("ceil(%)", x);
 	}
 
 	template <typename T>
-	inline T fract(const T& x)
+	inline typename AbstractType<T>::type fract(const T& x)
 	{
-		return T(xs("fract(%)", x.Definition()));
+		return xs("fract(%)", x);
 	}
 
 	template <typename T>
-	inline T mod(const T& x, const T& y)
+	inline typename AbstractType<T>::type mod(const T& x, const T& y)
 	{
-		return T(xs("mod(%, %)", x.Definition(), y.Definition()));
+		return xs("mod(%, %)", x, y);
 	}
 
 	template <typename T>
-	inline T modf(const T& x, const T& i)
+	inline typename AbstractType<T>::type modf(const T& x, const T& i)
 	{
-		return T(xs("modf(%, %)", x.Definition(), i.Definition()));
+		return xs("modf(%, %)", x, i);
 	}
 
 	template <typename T>
-	inline T clamp(const T& x, const T& minVal, const T& maxVal)
+	inline typename AbstractType<T>::type clamp(const T& x, const T& minVal, const T& maxVal)
 	{
-		return T(xs("clamp(%, %, %)", x.Definition(), minVal.Definition(), maxVal.Definition()));
+		return xs("clamp(%, %, %)", x, minVal, maxVal);
 	}
 
 	template <typename T>
-	inline T clamp(const T& genType, float minVal, float maxVal)
+	inline typename AbstractType<T>::type clamp(const T& genType, float minVal, float maxVal)
 	{
-		return T(xs("clamp(%, %, %)", x.Definition(), minVal, maxVal));
+		return xs("clamp(%, %, %)", x, minVal, maxVal);
 	}
 
 	template <typename T>
-	inline T min(const T& x, const T& y)
+	inline typename AbstractType<T>::type min(const T& x, const T& y)
 	{
-		return T(xs("min(%, %)", x.Definition(), y.Definition()));
+		return xs("min(%, %)", x, y);
 	}
 
 	template <typename T>
-	inline T max(const T& x, const T& y)
+	inline typename AbstractType<T>::type max(const T& x, const T& y)
 	{
-		return T(xs("max(%, %)", x.Definition(), y.Definition()));
+		return xs("max(%, %)", x, y);
 	}
 
 	template <typename T>
-	inline T mix(const T& x, const T& y, const T& a)
+	inline typename AbstractType<T>::type mix(const T& x, const T& y, const T& a)
 	{
-		return T(xs("mix(%, %, %)", x.Definition(), y.Definition(), a.Definition()));
+		return xs("mix(%, %, %)", x, y, a);
 	}
 
 	template <typename T>
-	inline T step(const T& edge, const T& x)
+	inline typename AbstractType<T>::type step(const T& edge, const T& x)
 	{
-		return T(xs("step(%, %)", edge.Definition(), x.Definition()));
+		return xs("step(%, %)", edge, x);
 	}
 
 	template <typename T>
-	inline T smoothstep(const T& edge0, const T& edge1, const T& x)
+	inline typename AbstractType<T>::type smoothstep(const T& edge0, const T& edge1, const T& x)
 	{
-		return T(xs("smoothstep(%, %, %)", edge0.Definition(), edge1.Definition(), x.Definition()));
+		return xs("smoothstep(%, %, %)", edge0, edge1, x);
 	}
 
 	template <typename T>
-	inline T isnan(const T& x)
+	inline typename AbstractType<T>::type isnan(const T& x)
 	{
-		return T(xs("isnan(%)", x.Definition()));
+		return xs("isnan(%)", x);
 	}
 
 	template <typename T>
-	inline T isinf(const T& x)
+	inline typename AbstractType<T>::type isinf(const T& x)
 	{
-		return T(xs("isinf(%)", x.Definition()));
+		return xs("isinf(%)", x);
 	}
 
 	inline Int floatBitsToInt(const Float& x)
 	{
-		return Int(xs("floatBitsToInt(%)", x.Definition()));
+		return xs("floatBitsToInt(%)", x);
 	}
 
 	inline Uint floatBitsToUint(const Float& x)
 	{
-		return Uint(xs("floatBitsToUint(%)", x.Definition()));
+		return xs("floatBitsToUint(%)", x);
 	}
 
 	inline Float intBitsToFloat(const Int& x)
 	{
-		return Float(xs("intBitsToFloat(%)", x.Definition()));
+		return xs("intBitsToFloat(%)", x);
 	}
 
 	inline Float uintBitsToFloat(const Uint& x)
 	{
-		return Float(xs("uintBitsToFloat(%)", x.Definition()));
+		return xs("uintBitsToFloat(%)", x);
 	}
 
 	template <typename T>
-	inline T fma(const T& a, const T& b, const T& c)
+	inline typename AbstractType<T>::type fma(const T& a, const T& b, const T& c)
 	{
-		return T(xs("fma(%, %, %)", a.Definition(), b.Definition(), c.Definition()));
+		return xs("fma(%, %, %)", a, b, c);
 	}
 
 	template <typename T>
-	inline T frexp(const T& x, const T& exp)
+	inline typename AbstractType<T>::type frexp(const T& x, const T& exp)
 	{
-		return T(xs("frexp(%, %)", x.Definition(), exp.Definition()));
+		return xs("frexp(%, %)", x, exp);
 	}
 
 	template <typename T>
-	inline T ldexp(const T& x, const T& exp)
+	inline typename AbstractType<T>::type ldexp(const T& x, const T& exp)
 	{
-		return T(xs("ldexp(%, %)", x.Definition(), exp.Definition()));
+		return xs("ldexp(%, %)", x, exp);
 	}
 
 }

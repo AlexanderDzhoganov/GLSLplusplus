@@ -69,6 +69,42 @@ namespace GLSLPP
 
 	};
 
+	template <typename T>
+	struct AbstractType
+	{
+		typedef T type;
+	};
+
+	template <>
+	struct AbstractType<bool>
+	{
+		typedef GenType<gentype_bool_detail> type;
+	};
+
+	template <>
+	struct AbstractType<int>
+	{
+		typedef GenType<gentype_int_detail> type;
+	};
+
+	template <>
+	struct AbstractType<unsigned int>
+	{
+		typedef GenType<gentype_uint_detail> type;
+	};
+
+	template <>
+	struct AbstractType<float>
+	{
+		typedef GenType<gentype_float_detail> type;
+	};
+
+	template <>
+	struct AbstractType<double>
+	{
+		typedef GenType<gentype_double_detail> type;
+	};
+
 	typedef GenType<gentype_bool_detail> Bool;
 	typedef GenType<gentype_int_detail> Int;
 	typedef GenType<gentype_uint_detail> Uint;
@@ -78,7 +114,7 @@ namespace GLSLPP
 	class vec2_bool_detail
 	{
 
-	public:
+		public:
 		typedef bool native_type;
 		typedef GenType<gentype_bool_detail> abstract_type;
 
@@ -92,7 +128,7 @@ namespace GLSLPP
 	class vec2_int_detail
 	{
 
-	public:
+		public:
 		typedef int native_type;
 		typedef GenType<gentype_int_detail> abstract_type;
 
