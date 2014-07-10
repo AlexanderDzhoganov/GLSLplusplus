@@ -6,62 +6,6 @@
 namespace GLSLPP
 {
 
-	// Angle and Trigonometry Functions(8.1)
-
-	template <typename detail>
-	inline GenType<detail> radians(const GenType<detail>& degrees)
-	{
-		return GenType<detail>(xs("radians(%)", y_over_x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> degrees(const GenType<detail>& radians)
-	{
-		return GenType<detail>(xs("degrees(%)", y_over_x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> sin(const GenType<detail>& angle)
-	{
-		return GenType<detail>(xs("sin(%)", angle.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> cos(const GenType<detail>& angle)
-	{
-		return GenType<detail>(xs("cos(%)", angle.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> tan(const GenType<detail>& angle)
-	{
-		return GenType<detail>(xs("tan(%)", angle.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> asin(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("asin(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> acos(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("acos(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> atan(const GenType<detail>& y, const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("atan(%, %)", y.ExtendedName(), x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> atan(const GenType<detail>& y_over_x)
-	{
-		return GenType<detail>(xs("atan(%)", y_over_x.ExtendedName()));
-	}
-
 	// Common Functions(8.3)
 
 	template <typename detail>
@@ -71,9 +15,45 @@ namespace GLSLPP
 	}
 
 	template <typename detail>
+	inline GenType<detail> sign(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("sign(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline GenType<detail> floor(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("floor(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline GenType<detail> trunc(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("trunc(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline GenType<detail> round(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("round(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline GenType<detail> roundEven(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("roundEven(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
 	inline GenType<detail> ceil(const GenType<detail>& x)
 	{
 		return GenType<detail>(xs("ceil(%)", x.ExtendedName()));
+	}
+
+	template <typename detail>
+	inline GenType<detail> fract(const GenType<detail>& x)
+	{
+		return GenType<detail>(xs("fract(%)", x.ExtendedName()));
 	}
 
 	template <typename detail>
@@ -89,16 +69,18 @@ namespace GLSLPP
 	}
 
 	template <typename detail>
-	inline GenType<detail> floor(const GenType<detail>& x)
+	inline GenType<detail> mod(const GenType<detail>& x, const GenType<detail>& y)
 	{
-		return GenType<detail>(xs("floor(%)", x.ExtendedName()));
+		return GenType<detail>(xs("mod(%, %)", x.ExtendedName(), y.ExtendedName()));
 	}
 
 	template <typename detail>
-	inline GenType<detail> fract(const GenType<detail>& x)
+	inline GenType<detail> mod(const GenType<detail>& x, float y)
 	{
-		return GenType<detail>(xs("fract(%)", x.ExtendedName()));
+		return GenType<detail>(xs("mod(%, %)", x.ExtendedName(), y));
 	}
+
+	
 
 	template <typename detail>
 	inline GenType<detail> max(const GenType<detail>& x, const GenType<detail>& y)
@@ -136,23 +118,8 @@ namespace GLSLPP
 		return GenType<detail>(xs("mix(%, %, %)", x.ExtendedName(), y.ExtendedName(), a));
 	}
 
-	template <typename detail>
-	inline GenType<detail> mod(const GenType<detail>& x, const GenType<detail>& y)
-	{
-		return GenType<detail>(xs("mod(%, %)", x.ExtendedName(), y.ExtendedName()));
-	}
 
-	template <typename detail>
-	inline GenType<detail> mod(const GenType<detail>& x, float y)
-	{
-		return GenType<detail>(xs("mod(%, %)", x.ExtendedName(), y));
-	}
 
-	template <typename detail>
-	inline GenType<detail> sign(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("sign(%)", x.ExtendedName()));
-	}
 
 	template <typename detail>
 	inline GenType<detail> smoothstep(const GenType<detail>& edge0, const GenType<detail>& edge1, const GenType<detail>& x)
@@ -176,50 +143,6 @@ namespace GLSLPP
 	inline GenType<detail> step(float edge, const GenType<detail>& x)
 	{
 		return GenType<detail>(xs("step(%, %)", edge, x.ExtendedName()));
-	}
-
-	//Exponential Functions(8.2)
-
-	template <typename detail>
-	inline GenType<detail> pow(const GenType<detail>& x, const GenType<detail>& y)
-	{
-		return GenType<detail>(xs("pow(%, %)", x.ExtendedName(), y.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> exp(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("exp(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> log(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("log(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> exp2(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("exp2(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> log2(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("log2(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> sqrt(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("sqrt(%)", x.ExtendedName()));
-	}
-
-	template <typename detail>
-	inline GenType<detail> inversesqrt(const GenType<detail>& x)
-	{
-		return GenType<detail>(xs("inversesqrt(%)", x.ExtendedName()));
 	}
 
 	// Geometric Functions(8.4)

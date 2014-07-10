@@ -29,6 +29,8 @@ namespace GLSLPP
 #include "mat4.h"
 #include "sampler2d.h"
 #include "sampler2dms.h"
+#include "trig_functions.h"
+#include "exp_functions.h"
 #include "functions.h"
 #include "operators.h"
 #include "controlflow.h"
