@@ -114,7 +114,7 @@ void main()
 
 Currently supported GLSL features:
 * Types: bool, int, uint, float, double, bvecN, ivecN, uvecN, vecN, dvecN, matN, sampler2D, sampler2DMS
-* All GLSL functions as of GLSL 4.40
+* Most GLSL functions as of GLSL 4.40
 * Attribute layout
 * Uniform binding
 * Swizzling
