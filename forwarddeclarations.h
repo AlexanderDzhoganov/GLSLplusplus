@@ -1,9 +1,0 @@
-#ifndef __GLSLPP_FORWARDDECLARATIONS_H
-#define __GLSLPP_FORWARDDECLARATIONS_H
-
-namespace GLSLPP
-{
-
-}
-
-#endif
